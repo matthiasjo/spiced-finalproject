@@ -5,14 +5,18 @@ body {
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
+<<<<<<< HEAD
   height: 100vh;
   width: 100vw;
+=======
+>>>>>>> Add Test Landing Page + Bootstrap
 }
 
 .main {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+<<<<<<< HEAD
   height: 100vh;
   margin: 0;
 }
@@ -40,10 +44,17 @@ a:visited {
   color: cornflowerblue;
 }
 
+=======
+  min-height: 100vh;
+  margin: 0;
+}
+
+>>>>>>> Add Test Landing Page + Bootstrap
 .header {
   display: flex;
   flex-direction: column;
   align-items: center;
+<<<<<<< HEAD
   margin-top: 25px;
   font-family: -webkit-pictograph;
   margin-bottom: 15px;
@@ -52,6 +63,10 @@ a:visited {
 #header-logo {
   height: 150px;
   width: 150px;
+=======
+  margin-top: 49px;
+  font-family: -webkit-pictograph;
+>>>>>>> Add Test Landing Page + Bootstrap
 }
 
 .landing-help {
@@ -60,6 +75,7 @@ a:visited {
 }
 
 .landing-help > h1 {
+<<<<<<< HEAD
   color: white;
   font-size: 60px;
   font-family: -webkit-pictograph;
@@ -125,5 +141,21 @@ a:visited {
 @media (min-width: 1200px) {
   .landing-help > h1 {
     letter-spacing: 15px;
+=======
+  color: darkorange;
+  font-size: 28px;
+  font-family: -webkit-pictograph;
+}
+
+@media (max-width: 575.98px) {
+  .header > h1 {
+    font-size: 20px;
+    color: red;
+  }
+
+  .header > h3 {
+    font-size: 16px;
+    color: red;
+>>>>>>> Add Test Landing Page + Bootstrap
   }
 }

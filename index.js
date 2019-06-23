@@ -136,4 +136,10 @@ app.get("*", function(req, res) {
   res.sendFile(__dirname + "/public/index.html");
 });
 
+app.get("/landing", (req, res) => {
+  res.render("landingPage", {
+    layout: "main"
+  });
+});
+
 app.listen(port, () => console.log(`This server is listening on port ${port}`));
