@@ -5,22 +5,53 @@ body {
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
+  height: 100vh;
+  width: 100vw;
 }
 
 .main {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  min-height: 100vh;
+  height: 100vh;
   margin: 0;
+}
+
+h1,
+h3,
+img {
+  margin: 0;
+}
+
+.header > h1 {
+  font-size: 60px;
+  margin-bottom: 15px;
+  letter-spacing: 10px;
+}
+
+h3 {
+  color: cornflowerblue;
+  font-size: 30px;
+}
+
+a,
+a:visited {
+  text-decoration: none;
+  color: cornflowerblue;
 }
 
 .header {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 49px;
+  margin-top: 25px;
   font-family: -webkit-pictograph;
+  margin-bottom: 15px;
+}
+
+#header-logo {
+  height: 150px;
+  width: 150px;
 }
 
 .landing-help {
@@ -29,19 +60,70 @@ body {
 }
 
 .landing-help > h1 {
-  color: darkorange;
-  font-size: 28px;
+  color: white;
+  font-size: 60px;
   font-family: -webkit-pictograph;
 }
 
+/**************** RESPONSIVENESS SMALL ****************/
 @media (max-width: 575.98px) {
   .header > h1 {
-    font-size: 20px;
-    color: red;
+    font-size: 30px;
   }
 
   .header > h3 {
-    font-size: 16px;
-    color: red;
+    font-size: 20px;
+  }
+
+  #header-logo {
+    height: 50px;
+    width: 50px;
+  }
+
+  .landing-help > h1 {
+    font-size: 20px;
+    text-align: center;
+  }
+}
+
+/**************** RESPONSIVENESS MEDIUM ****************/
+@media (min-width: 576px) and (max-width: 767.98px) {
+  .header > h1 {
+    font-size: 60px;
+  }
+
+  .header > h3 {
+    font-size: 40px;
+  }
+
+  #header-logo {
+    height: 100px;
+    width: 100px;
+  }
+
+  .landing-help > h1 {
+    font-size: 30px;
+    text-align: center;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+  .landing-help > h1 {
+    font-size: 40px;
+    text-align: center;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  .landing-help > h1 {
+    font-size: 50px;
+    text-align: center;
+    letter-spacing: 0;
+  }
+}
+
+@media (min-width: 1200px) {
+  .landing-help > h1 {
+    letter-spacing: 15px;
   }
 }
