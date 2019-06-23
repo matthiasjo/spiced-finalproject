@@ -1,4 +1,4 @@
-body {
+#app {
   display: flex;
   justify-content: center;
   background-image: url("https://images.unsplash.com/photo-1549291981-56d443d5e2a2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80");
@@ -66,7 +66,6 @@ a:visited {
   font-family: -webkit-pictograph;
 }
 
-/**************** RESPONSIVENESS SMALL ****************/
 @media (max-width: 575.98px) {
   .header > h1 {
     font-size: 30px;
@@ -90,7 +89,7 @@ a:visited {
 /**************** RESPONSIVENESS MEDIUM ****************/
 @media (min-width: 576px) and (max-width: 767.98px) {
   .header > h1 {
-    font-size: 60px;
+    font-size: 50px;
   }
 
   .header > h3 {
@@ -110,16 +109,18 @@ a:visited {
 
 @media (min-width: 768px) and (max-width: 991.98px) {
   .landing-help > h1 {
-    font-size: 40px;
+    font-size: 60px;
     text-align: center;
+  }
+
+  .header > h1 {
+    font-size: 50px;
   }
 }
 
 @media (min-width: 992px) and (max-width: 1199.98px) {
   .landing-help > h1 {
     font-size: 50px;
-    text-align: center;
-    letter-spacing: 0;
   }
 }
 
