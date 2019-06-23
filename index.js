@@ -13,6 +13,7 @@ const bodyParser = require("body-parser");
 
 //////////////////// ROUTERS IMPORT \\\\\\\\\\\\\\\\\
 const aboutRouter = require("./routers/aboutRoute");
+const landingRouter = require("./routers/landingRoute");
 /////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
 const app = express();
@@ -64,6 +65,7 @@ const uploader = multer({
 
 //////////////////// ROUTERS USE \\\\\\\\\\\\\\\\\
 app.use(aboutRouter);
+app.use(landingRouter);
 /////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
 app.get("/data", (req, res) => {
@@ -132,6 +134,12 @@ app.use(serveStatic("./public"));
 
 app.get("*", function(req, res) {
   res.sendFile(__dirname + "/public/index.html");
+});
+
+app.get("/landing", (req, res) => {
+  res.render("landingPage", {
+    layout: "main"
+  });
 });
 
 app.listen(port, () => console.log(`This server is listening on port ${port}`));
