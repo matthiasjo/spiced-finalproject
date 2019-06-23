@@ -7,7 +7,6 @@ const path = require("path");
 const csurf = require("csurf");
 const cookieSession = require("cookie-session");
 const helmet = require("helmet");
-const hb = require("express-handlebars");
 const s3 = require("./utils/s3");
 const bodyParser = require("body-parser");
 
@@ -20,8 +19,6 @@ const app = express();
 const port = 8081;
 
 app.use(helmet());
-app.engine("handlebars", hb());
-app.set("view engine", "handlebars");
 
 app.use(bodyParser.json());
 
