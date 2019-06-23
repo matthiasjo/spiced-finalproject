@@ -22,10 +22,10 @@ export default new Router({
     },
 
     {
-      path: "/test",
-      name: "test",
+      path: "/welcome",
+      name: "landing",
       component: () =>
-        import(/* webpackChunkName: "about" */ "./views/Test.vue")
+        import(/* webpackChunkName: "about" */ "./views/Landing.vue")
     }
   ]
 });
