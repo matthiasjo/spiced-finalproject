@@ -7,21 +7,20 @@ const path = require("path");
 const csurf = require("csurf");
 const cookieSession = require("cookie-session");
 const helmet = require("helmet");
-const hb = require("express-handlebars");
 const s3 = require("./utils/s3");
 const bodyParser = require("body-parser");
 
 //////////////////// ROUTERS IMPORT \\\\\\\\\\\\\\\\\
 const aboutRouter = require("./routers/aboutRoute");
+const authRouter = require("./routers/authRoute");
 /////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
 const app = express();
 const port = 8081;
 
 app.use(helmet());
-app.engine("handlebars", hb());
-app.set("view engine", "handlebars");
 
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 app.use(
@@ -35,7 +34,7 @@ app.use(
 
 app.use(csurf());
 app.use(function(req, res, next) {
-  res.locals.csrfToken = req.csrfToken();
+  res.cookie("mytoken", req.csrfToken());
   res.setHeader(`X-FRAME-OPTIONS`, `DENY`);
   next();
 });
@@ -64,9 +63,15 @@ const uploader = multer({
 
 //////////////////// ROUTERS USE \\\\\\\\\\\\\\\\\
 app.use(aboutRouter);
+app.use(authRouter);
 /////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
-app.get("/data", (req, res) => {
+app.get("/cookies", (req, res) => {
+  res.json({ success: true });
+});
+
+app.post("/sendReg", (req, res) => {
+  console.log(req.body);
   res.json({ success: true });
 });
 

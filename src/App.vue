@@ -2,11 +2,37 @@
   <div id="app">
     <div id="nav">
       <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+      <router-link to="/about">About</router-link> |
+      <router-link to="/auth">Authentication</router-link>
     </div>
     <router-view />
   </div>
 </template>
+
+<script>
+// @ is an alias to /src
+import axios from "@/axios";
+
+export default {
+  name: "App",
+  props: {},
+  components: {},
+  data: function() {
+    return {
+      cookies: false
+    };
+  },
+  mounted: function() {
+    var self = this;
+    axios.get("/cookies").then(function(resp) {
+      if (resp.data.success) {
+        self.cookies = true;
+        console.log("cookies", self.cookies);
+      }
+    });
+  }
+};
+</script>
 
 <style>
 #app {
