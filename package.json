@@ -1,5 +1,5 @@
 {
-  "name": "animal-shelter",
+  "name": "spiced-finalproject",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -8,8 +8,11 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "axios": "^0.19.0",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
+    "bootstrap": "^4.3.1",
+    "bootstrap-vue": "^2.0.0-rc.24",
     "cookie-parser": "^1.4.4",
     "cookie-session": "^1.3.3",
     "core-js": "^2.6.5",
@@ -19,6 +22,7 @@
     "helmet": "^3.18.0",
     "knox-s3": "^0.9.5",
     "multer": "^1.4.1",
+    "normalize.css": "^8.0.1",
     "serve-static": "^1.14.1",
     "spiced-pg": "^1.0.0",
     "uid-safe": "^2.1.5",

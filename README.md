@@ -1,4 +1,4 @@
-# animal-shelter
+# spiced-finalproject
 
 ## Project setup
 ```
