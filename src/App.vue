@@ -25,6 +25,7 @@ export default {
   mounted: function() {
     var self = this;
     axios.get("/cookies").then(function(resp) {
+      console.log("access");
       if (resp.data.success) {
         self.cookies = true;
       }
