@@ -27,7 +27,6 @@ export default {
     axios.get("/cookies").then(function(resp) {
       if (resp.data.success) {
         self.cookies = true;
-        console.log("cookies", self.cookies);
       }
     });
   }

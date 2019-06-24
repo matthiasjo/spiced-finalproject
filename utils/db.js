@@ -18,19 +18,20 @@ module.exports.addUser = function addUser(first, last, email, pwhash) {
 
 module.exports.verifyUser = function verifyUser(email) {
   return db.query(
-    `UPDATE users SET verified = true WHERE email = $1 RETURNING id`,
+    `UPDATE users SET verified = true WHERE email = $1 RETURNING id, verified`,
     [email]
   );
 };
 
-module.exports.getLoginData = function getLoginData(userinfo) {
-  return db.query(`SELECT * FROM users WHERE email=$1 OR username=$1`, [
-    userinfo
-  ]);
+module.exports.updatePass = function updatePass(pwHash, email) {
+  return db.query(
+    `UPDATE users SET password = $1 WHERE email = $2 RETURNING id, admin, verified`,
+    [pwHash, email]
+  );
 };
 
-module.exports.getUserData = function getUserData(userid) {
-  return db.query(`SELECT * FROM users WHERE id=$1`, [userid]);
+module.exports.getUserData = function getUserData(email) {
+  return db.query(`SELECT * FROM users WHERE email=$1`, [email]);
 };
 
 module.exports.pushImage = function pushImage(id, avatar) {

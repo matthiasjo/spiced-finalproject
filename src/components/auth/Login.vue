@@ -1,8 +1,14 @@
 <template>
   <div class="hello" v-if="reset === false">
+    <div v-if="error">{{ error }}</div>
     <form v-on:submit.prevent="sendLogin">
-      <input type="email" name="email" v-model="loginForm.email" />
-      <input type="password" name="password" v-model="loginForm.password" />
+      <input type="email" name="email" required v-model="loginForm.email" />
+      <input
+        type="password"
+        name="password"
+        required
+        v-model="loginForm.password"
+      />
       <button type="submit">Sign In</button>
     </form>
     <button v-on:click.prevent="$emit('swap-authForm')">Sign Up?</button>
@@ -27,6 +33,7 @@ export default {
   props: {},
   data: function() {
     return {
+      error: null,
       reset: false,
       loginForm: {
         email: "",
@@ -45,14 +52,15 @@ export default {
       console.log(this.reset);
     },
     sendLogin: function() {
-      var formData = new FormData();
-      formData.append("email", this.loginForm.email);
-      formData.append("password", this.loginForm.password);
-      //var self = this;
+      var self = this;
       axios
         .post("/sendLogin", this.loginForm)
         .then(function(resp) {
-          console.log(resp);
+          if (resp.data.success) {
+            this.$router.push("/");
+          } else {
+            self.error = resp.data.error;
+          }
         })
         .catch(err => console.log(err));
     }

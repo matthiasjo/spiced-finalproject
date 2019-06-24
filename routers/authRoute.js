@@ -14,10 +14,9 @@ router.route("/sendReg").post(async (req, res) => {
     const userInfo = await db.addUser(first, last, email, pwHash);
     console.log(userInfo.rows[0].id);
     const hashInfo = await mailhash.encrypt(email);
-    console.log("HASHINFO", hashInfo);
-    const verifyLink = `http://localhost:8080/verify/${email}/${
+    const verifyLink = `http://localhost:8080/verify?email=${email}&hash=${
       hashInfo.encrypted
-    }/${hashInfo.iv}`;
+    }&iv=${hashInfo.iv}`;
     await mailer.verifyMail(email, first, last, verifyLink);
     res.json({ success: true, email: email });
   } catch (e) {
@@ -25,12 +24,14 @@ router.route("/sendReg").post(async (req, res) => {
   }
 });
 
-router.route("/verify/:email/:hash/:iv").get(async (req, res) => {
-  const { email, hash, iv } = req.params;
+router.route("/verify/").get(async (req, res) => {
+  console.log(req.query);
+  const { email, hash, iv } = req.query;
   const decryptMail = await mailhash.decrypt(hash, iv);
   if (email == decryptMail) {
     const newUser = await db.verifyUser(email);
     req.session.userId = newUser.rows[0].id;
+    req.session.verified = newUser.rows[0].verified;
     res.redirect("/");
   } else {
     res.json({ success: false, error: "Email couldn't be verified" });
@@ -45,11 +46,17 @@ router.route("/sendLogin").post(async (req, res) => {
       password,
       userData.rows[0].password
     );
-    if (checkLogin) {
-      // ADMIN AND VERIFIED COLUMN IN USER.
-      // SET ADMIN && USER COOKIE SESSION COOKIE
-      // REDIRECT TO HOME
-      res.json({ success: true });
+    if (checkLogin && userData.rows[0].verified) {
+      if (userData.rows[0].admin == true) {
+        req.session.userId = userData.rows[0].id;
+        req.session.admin = true;
+        res.json({ success: true });
+      } else {
+        req.session.userId = userData.rows[0].id;
+        res.json({ success: true });
+      }
+    } else if (checkLogin && !userData.rows[0].verified) {
+      res.json({ success: false, error: "Please verify your email!" });
     } else if (!checkLogin) {
       res.json({ success: false, error: "Wrong Password" });
     }
@@ -64,8 +71,17 @@ router.route("/resetAuth").post(async (req, res) => {
   try {
     const userData = await db.getUserData(email);
     if (userData.rows[0]) {
-      // RESET PASSWORD
-      res.json({ success: true });
+      const hashInfo = await mailhash.encrypt(email);
+      const resetLink = `http://localhost:8080/#/reset?email=${email}&hash=${
+        hashInfo.encrypted
+      }&iv=${hashInfo.iv}`;
+      await mailer.resetPassword(
+        email,
+        userData.rows[0].first,
+        userData.rows[0].last,
+        resetLink
+      );
+      res.json({ success: true, email: email });
     } else {
       res.json({
         success: false,
@@ -75,5 +91,31 @@ router.route("/resetAuth").post(async (req, res) => {
   } catch (e) {
     console.log(e);
     res.json({ success: false, error: "Email is not registered" });
+  }
+});
+
+router.route("/resetPass").post(async (req, res) => {
+  const { password, email, hash, iv } = req.body;
+  console.log(hash, iv);
+  const decryptMail = await mailhash.decrypt(hash, iv);
+  if (email == decryptMail) {
+    const pwHash = await bc.hashPassword(password);
+    const userInfo = await db.updatePass(pwHash, email);
+    if (userInfo.rows[0].admin && userInfo.rows[0].verified) {
+      req.session.userId = userInfo.rows[0].id;
+      req.session.admin = true;
+      res.json({ success: true });
+      res.json({ success: true });
+    } else if (userInfo.rows[0].verified) {
+      req.session.userId = userInfo.rows[0].id;
+      res.json({ success: true });
+    } else if (!userInfo.rows[0].verified) {
+      res.json({
+        success: false,
+        error: "Password was reset, but you need to verify your email"
+      });
+    }
+  } else {
+    res.json({ success: false, error: "Email couldn't be verified" });
   }
 });

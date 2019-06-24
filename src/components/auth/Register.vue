@@ -1,10 +1,18 @@
 <template>
   <div class="hello">
+    <div v-if="emailSend">
+      <p>A verification email has been sent to {{ email }}</p>
+    </div>
     <form v-on:submit.prevent="sendReg">
-      <input type="text" name="first" v-model="regForm.first" />
-      <input type="text" name="last" v-model="regForm.last" />
-      <input type="email" name="email" v-model="regForm.email" />
-      <input type="password" name="password" v-model="regForm.password" />
+      <input type="text" name="first" required v-model="regForm.first" />
+      <input type="text" name="last" required v-model="regForm.last" />
+      <input type="email" name="email" required v-model="regForm.email" />
+      <input
+        type="password"
+        name="password"
+        required
+        v-model="regForm.password"
+      />
       <button type="submit">Submit</button>
     </form>
     <button v-on:click.prevent="$emit('swap-authForm')">Sign in?</button>
@@ -22,19 +30,16 @@ export default {
       emailSend: false,
       email: "",
       regForm: {
-        first: "",
-        last: "",
-        email: "",
-        password: ""
+        first: null,
+        last: null,
+        email: null,
+        password: null
       }
     };
   },
   mounted: function() {},
   methods: {
     sendReg: function() {
-      var formData = new FormData();
-      formData.append("first", this.regForm.first);
-      formData.append("last", this.regForm.last);
       var self = this;
       axios
         .post("/sendReg", this.regForm)

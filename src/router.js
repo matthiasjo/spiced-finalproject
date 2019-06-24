@@ -23,8 +23,13 @@ export default new Router({
     {
       path: "/auth",
       name: "auth",
+      component: () => import(/* webpackChunkName: "auth" */ "./views/Auth.vue")
+    },
+    {
+      path: "/reset",
+      name: "ResetPass",
       component: () =>
-        import(/* webpackChunkName: "about" */ "./views/Auth.vue")
+        import(/* webpackChunkName: "resetPass" */ "./components/auth/ResetPass.vue")
     }
   ]
 });

@@ -70,6 +70,15 @@ app.get("/cookies", (req, res) => {
   res.json({ success: true });
 });
 
+app.get("/getUserData", (req, res) => {
+  if (req.session.verified) {
+    delete req.session.verified;
+    res.json({ verified: true });
+  } else {
+    res.json({ success: true });
+  }
+});
+
 app.post("/sendReg", (req, res) => {
   console.log(req.body);
   res.json({ success: true });
@@ -117,21 +126,21 @@ app.post("/upload", uploader.single("file"), s3.upload, function(req, res) {
     .catch(err => console.log(err));
 });
 
-app.post("/sendComment", (req, res) => {
-  const { comment, username, id } = req.body;
-  db.pushComment(comment, username, id)
-    .then(qResponse => {
-      const newComment = {
-        username: username,
-        comment: comment,
-        image_id: id,
-        id: qResponse.rows[0].id,
-        created_at: qResponse.rows[0].created_at
-      };
-      res.json(newComment);
-    })
-    .catch(err => console.log(err));
-});
+// app.post("/sendComment", (req, res) => {
+//   const { comment, username, id } = req.body;
+//   db.pushComment(comment, username, id)
+//     .then(qResponse => {
+//       const newComment = {
+//         username: username,
+//         comment: comment,
+//         image_id: id,
+//         id: qResponse.rows[0].id,
+//         created_at: qResponse.rows[0].created_at
+//       };
+//       res.json(newComment);
+//     })
+//     .catch(err => console.log(err));
+// });
 
 app.use(serveStatic("./public"));
 

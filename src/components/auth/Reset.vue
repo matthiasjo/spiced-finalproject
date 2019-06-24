@@ -1,9 +1,11 @@
 <template>
   <div class="hello">
+    <div v-if="emailSend">
+      <p>A email has been sent to {{ email }}</p>
+    </div>
+    <div v-if="error">{{ error }}</div>
     <form v-on:submit.prevent="resetAuth">
-      <input type="text" name="first" v-model="resetForm.first" />
-      <input type="text" name="last" v-model="resetForm.last" />
-      <input type="email" name="email" v-model="resetForm.email" />
+      <input type="email" name="email" required v-model="resetForm.email" />
       <button type="submit">Reset Password</button>
     </form>
     <button v-on:click.prevent="$emit('swap-loginForm')">Go back?</button>
@@ -18,25 +20,27 @@ export default {
   props: {},
   data: function() {
     return {
+      error: null,
+      emailSend: false,
+      email: "",
       resetForm: {
-        first: "",
-        last: "",
-        email: ""
+        email: null
       }
     };
   },
   mounted: function() {},
   methods: {
     resetAuth: function() {
-      var formData = new FormData();
-      formData.append("first", this.resetForm.first);
-      formData.append("last", this.resetForm.last);
-      formData.append("email", this.resetForm.email);
-      //var self = this;
+      var self = this;
       axios
         .post("/resetAuth", this.resetForm)
         .then(function(resp) {
-          console.log(resp);
+          if (resp.data.success) {
+            self.emailSend = true;
+            self.email = resp.data.email;
+          } else {
+            self.error = resp.data.error;
+          }
         })
         .catch(err => console.log(err));
     }
