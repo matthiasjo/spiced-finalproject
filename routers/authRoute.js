@@ -2,6 +2,8 @@ const express = require("express");
 const router = express.Router();
 const db = require("../utils/db");
 const bc = require("../utils/bc");
+const mailer = require("../utils/mailVerify");
+const mailhash = require("../utils/mailhash");
 
 module.exports = router;
 
@@ -10,16 +12,30 @@ router.route("/sendReg").post(async (req, res) => {
   try {
     const pwHash = await bc.hashPassword(password);
     const userInfo = await db.addUser(first, last, email, pwHash);
-    console.log("userInfo in registration", userInfo.rows);
-    // ADMIN AND VERIFIED COLUMN IN USER. SEND EMAIL
-    // redirect to LOG IN
-    res.json({ success: true });
+    console.log(userInfo.rows[0].id);
+    const hashInfo = await mailhash.encrypt(email);
+    console.log("HASHINFO", hashInfo);
+    const verifyLink = `http://localhost:8080/verify/${email}/${
+      hashInfo.encrypted
+    }/${hashInfo.iv}`;
+    await mailer.verifyMail(email, first, last, verifyLink);
+    res.json({ success: true, email: email });
   } catch (e) {
     console.log(e);
   }
 });
 
-//// ADD ROUTE FOR EMAIL VERIFICATION
+router.route("/verify/:email/:hash/:iv").get(async (req, res) => {
+  const { email, hash, iv } = req.params;
+  const decryptMail = await mailhash.decrypt(hash, iv);
+  if (email == decryptMail) {
+    const newUser = await db.verifyUser(email);
+    req.session.userId = newUser.rows[0].id;
+    res.redirect("/");
+  } else {
+    res.json({ success: false, error: "Email couldn't be verified" });
+  }
+});
 
 router.route("/sendLogin").post(async (req, res) => {
   const { email, password } = req.body;

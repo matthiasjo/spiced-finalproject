@@ -5,23 +5,22 @@ const db = spicedPg(dbUrl);
 
 ///////////////////////// PLACEHOLDER QUERYS \\\\\\\\\\\\\\\\\\\\\
 
-module.exports.addUser = function addUser(
-  first,
-  last,
-  username,
-  email,
-  pwhash,
-  bio,
-  avatar
-) {
+module.exports.addUser = function addUser(first, last, email, pwhash) {
   if (!/[^a-z]/i.test(first) && !/[^a-z]/i.test(last) && pwhash != "") {
     return db.query(
-      `INSERT INTO users (first, last, username, email, password, bio, avatar) VALUES($1, $2, $3, $4, $5, $6, $7) RETURNING id`,
-      [first, last, username, email, pwhash, bio, avatar]
+      `INSERT INTO users (firstname, lastname, email, password) VALUES($1, $2, $3, $4) RETURNING id`,
+      [first, last, email, pwhash]
     );
   } else {
     return Promise.reject(new Error("Wrong input"));
   }
+};
+
+module.exports.verifyUser = function verifyUser(email) {
+  return db.query(
+    `UPDATE users SET verified = true WHERE email = $1 RETURNING id`,
+    [email]
+  );
 };
 
 module.exports.getLoginData = function getLoginData(userinfo) {

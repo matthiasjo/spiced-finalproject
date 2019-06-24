@@ -19,6 +19,8 @@ export default {
   props: {},
   data: function() {
     return {
+      emailSend: false,
+      email: "",
       regForm: {
         first: "",
         last: "",
@@ -33,11 +35,14 @@ export default {
       var formData = new FormData();
       formData.append("first", this.regForm.first);
       formData.append("last", this.regForm.last);
-      //var self = this;
+      var self = this;
       axios
         .post("/sendReg", this.regForm)
         .then(function(resp) {
-          console.log(resp);
+          if (resp.data.success) {
+            self.emailSend = true;
+            self.email = resp.data.email;
+          }
         })
         .catch(err => console.log(err));
     }
