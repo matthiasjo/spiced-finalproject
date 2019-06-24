@@ -1,7 +1,7 @@
 #app {
   display: flex;
   justify-content: center;
-  background-image: url("https://images.unsplash.com/photo-1549291981-56d443d5e2a2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80");
+  background-image: url("https://images.unsplash.com/photo-1537637677791-8c6d8a2bf7d6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80");
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;

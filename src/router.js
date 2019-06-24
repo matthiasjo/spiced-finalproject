@@ -7,11 +7,6 @@ Vue.use(Router);
 export default new Router({
   routes: [
     {
-      path: "/",
-      name: "home",
-      component: Home
-    },
-    {
       path: "/about",
       name: "about",
       // route level code-splitting
@@ -22,7 +17,11 @@ export default new Router({
     },
 
     {
+<<<<<<< HEAD
       path: "/welcome",
+=======
+      path: "/",
+>>>>>>> f5ca1fe17d3f0d168cba9561845d6c10e441ccc5
       name: "landing",
       component: () =>
         import(/* webpackChunkName: "about" */ "./views/Landing.vue")

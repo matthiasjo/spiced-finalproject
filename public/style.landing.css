@@ -1,32 +1,20 @@
-body {
+.main {
   display: flex;
   justify-content: center;
   background-image: url("https://images.unsplash.com/photo-1549291981-56d443d5e2a2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80");
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-<<<<<<< HEAD
-<<<<<<< HEAD
-  height: 100vh;
-  width: 100vw;
-=======
->>>>>>> Add Test Landing Page + Bootstrap
-=======
   background-attachment: fixed;
   height: 100vh;
   width: 100vw;
->>>>>>> a598800cb580f9b7473b7c30ad42e88261465b8f
 }
 
 .main {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> a598800cb580f9b7473b7c30ad42e88261465b8f
-  height: 100vh;
+  min-height: 100vh;
   margin: 0;
 }
 
@@ -36,15 +24,17 @@ img {
   margin: 0;
 }
 
-.header > h1 {
+.header h1 {
   font-size: 60px;
   margin-bottom: 15px;
   letter-spacing: 10px;
+  margin: 0 20px;
 }
 
 h3 {
   color: cornflowerblue;
   font-size: 30px;
+  text-align: center;
 }
 
 a,
@@ -53,38 +43,27 @@ a:visited {
   color: cornflowerblue;
 }
 
-<<<<<<< HEAD
-=======
-  min-height: 100vh;
-  margin: 0;
-}
-
->>>>>>> Add Test Landing Page + Bootstrap
-=======
->>>>>>> a598800cb580f9b7473b7c30ad42e88261465b8f
 .header {
   display: flex;
   flex-direction: column;
   align-items: center;
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> a598800cb580f9b7473b7c30ad42e88261465b8f
   margin-top: 25px;
+  margin-top: 15vh;
   font-family: -webkit-pictograph;
   margin-bottom: 15px;
 }
 
+.title {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
 #header-logo {
-  height: 150px;
-  width: 150px;
-<<<<<<< HEAD
-=======
   margin-top: 49px;
   font-family: -webkit-pictograph;
->>>>>>> Add Test Landing Page + Bootstrap
-=======
->>>>>>> a598800cb580f9b7473b7c30ad42e88261465b8f
+  height: 100px;
+  width: 100px;
 }
 
 .landing-help {
@@ -93,10 +72,6 @@ a:visited {
 }
 
 .landing-help > h1 {
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> a598800cb580f9b7473b7c30ad42e88261465b8f
   color: white;
   font-size: 60px;
   font-family: -webkit-pictograph;
@@ -104,12 +79,14 @@ a:visited {
 
 /**************** RESPONSIVENESS SMALL ****************/
 @media (max-width: 575.98px) {
-  .header > h1 {
+  .title > h1 {
     font-size: 30px;
+    text-align: center;
+    margin: 0 10px;
   }
 
-  .header > h3 {
-    font-size: 20px;
+  .subtitle > h3 {
+    font-size: 22px;
   }
 
   #header-logo {
@@ -121,15 +98,19 @@ a:visited {
     font-size: 20px;
     text-align: center;
   }
+  .header {
+    padding: 0 10px;
+  }
 }
 
 /**************** RESPONSIVENESS MEDIUM ****************/
 @media (min-width: 576px) and (max-width: 767.98px) {
-  .header > h1 {
-    font-size: 60px;
+  .title > h1 {
+    font-size: 50px;
+    text-align: center;
   }
 
-  .header > h3 {
+  .subtitle > h3 {
     font-size: 40px;
   }
 
@@ -145,6 +126,14 @@ a:visited {
 }
 
 @media (min-width: 768px) and (max-width: 991.98px) {
+  .header > h1 {
+    font-size: 60px;
+  }
+
+  .header > h3 {
+    font-size: 40px;
+  }
+
   .landing-help > h1 {
     font-size: 40px;
     text-align: center;
@@ -156,30 +145,5 @@ a:visited {
     font-size: 50px;
     text-align: center;
     letter-spacing: 0;
-  }
-}
-
-@media (min-width: 1200px) {
-  .landing-help > h1 {
-    letter-spacing: 15px;
-<<<<<<< HEAD
-=======
-  color: darkorange;
-  font-size: 28px;
-  font-family: -webkit-pictograph;
-}
-
-@media (max-width: 575.98px) {
-  .header > h1 {
-    font-size: 20px;
-    color: red;
-  }
-
-  .header > h3 {
-    font-size: 16px;
-    color: red;
->>>>>>> Add Test Landing Page + Bootstrap
-=======
->>>>>>> a598800cb580f9b7473b7c30ad42e88261465b8f
   }
 }
