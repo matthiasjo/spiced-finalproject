@@ -19,3 +19,16 @@ a:visited {
   display: flex;
   justify-content: center;
 }
+
+/**************** RESPONSIVENESS SMALL ****************/
+@media (max-width: 575.98px) {
+  #nav {
+    font-size: 30px;
+  }
+}
+/**************** RESPONSIVENESS Medium ****************/
+@media (min-width: 576px) and (max-width: 767.98px) {
+  #nav {
+    font-size: 40px;
+  }
+}

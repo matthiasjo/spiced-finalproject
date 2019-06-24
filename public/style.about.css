@@ -19,3 +19,25 @@ h1 {
   text-align: center;
   color: #6495ed;
 }
+
+/**************** RESPONSIVENESS SMALL ****************/
+@media (max-width: 575.98px) {
+  h1 {
+    font-size: 30px;
+    letter-spacing: 0;
+  }
+  p {
+    font-size: 20px;
+  }
+}
+
+/**************** RESPONSIVENESS MEDIUM ****************/
+@media (min-width: 576px) and (max-width: 767.98px) {
+  h1 {
+    font-size: 50px;
+  }
+
+  p {
+    font-size: 28px;
+  }
+}

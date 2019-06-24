@@ -1,7 +1,7 @@
 <template>
   <div class="about">
     <div class="about-text">
-      <h1 class="text-danger">About us</h1>
+      <h1>About us</h1>
       <p>
         Our small dog rescue shelter is based in Harrogate, North Yorkshire and
         opened in November 2017. It was the realisation of a dream of our

@@ -76,12 +76,14 @@ a:visited {
 
 /**************** RESPONSIVENESS SMALL ****************/
 @media (max-width: 575.98px) {
-  .header > h1 {
+  .title > h1 {
     font-size: 30px;
+    text-align: center;
+    margin: 0 10px;
   }
 
-  .header > h3 {
-    font-size: 20px;
+  .subtitle > h3 {
+    font-size: 22px;
   }
 
   #header-logo {
@@ -93,15 +95,19 @@ a:visited {
     font-size: 20px;
     text-align: center;
   }
+  .header {
+    padding: 0 10px;
+  }
 }
 
 /**************** RESPONSIVENESS MEDIUM ****************/
 @media (min-width: 576px) and (max-width: 767.98px) {
-  .header > h1 {
-    font-size: 60px;
+  .title > h1 {
+    font-size: 50px;
+    text-align: center;
   }
 
-  .header > h3 {
+  .subtitle > h3 {
     font-size: 40px;
   }
 
@@ -117,6 +123,14 @@ a:visited {
 }
 
 @media (min-width: 768px) and (max-width: 991.98px) {
+  .header > h1 {
+    font-size: 60px;
+  }
+
+  .header > h3 {
+    font-size: 40px;
+  }
+
   .landing-help > h1 {
     font-size: 40px;
     text-align: center;
