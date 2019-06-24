@@ -1,7 +1,7 @@
 #app {
   display: flex;
   justify-content: center;
-  background-image: url("https://images.unsplash.com/photo-1549291981-56d443d5e2a2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80");
+  background-image: url("https://images.unsplash.com/photo-1537637677791-8c6d8a2bf7d6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80");
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -10,6 +10,15 @@
   width: 100vw;
 }
 
+#nav {
+  font-size: 30px;
+}
+
+.nav-wrapper {
+  display: flex;
+  justify-content: center;
+  position: absolute;
+}
 .main {
   display: flex;
   flex-direction: column;
@@ -26,7 +35,7 @@ img {
 
 .header > h1 {
   font-size: 60px;
-  margin-bottom: 15px;
+  margin: 25px 0 15px 0;
   letter-spacing: 10px;
 }
 
@@ -50,9 +59,14 @@ a:visited {
   margin-bottom: 15px;
 }
 
+.subtitle {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
 #header-logo {
-  height: 150px;
-  width: 150px;
+  height: 125px;
+  width: 125px;
 }
 
 .landing-help {
@@ -65,10 +79,11 @@ a:visited {
   font-size: 60px;
   font-family: -webkit-pictograph;
 }
+/**************** RESPONSIVENESS Small ****************/
 
 @media (max-width: 575.98px) {
   .header > h1 {
-    font-size: 30px;
+    font-size: 20px;
   }
 
   .header > h3 {
@@ -89,11 +104,11 @@ a:visited {
 /**************** RESPONSIVENESS MEDIUM ****************/
 @media (min-width: 576px) and (max-width: 767.98px) {
   .header > h1 {
-    font-size: 50px;
+    font-size: 40px;
   }
 
   .header > h3 {
-    font-size: 40px;
+    font-size: 30px;
   }
 
   #header-logo {
@@ -102,14 +117,13 @@ a:visited {
   }
 
   .landing-help > h1 {
-    font-size: 30px;
-    text-align: center;
+    font-size: 40px;
   }
 }
 
 @media (min-width: 768px) and (max-width: 991.98px) {
   .landing-help > h1 {
-    font-size: 60px;
+    font-size: 50px;
     text-align: center;
   }
 
@@ -120,12 +134,16 @@ a:visited {
 
 @media (min-width: 992px) and (max-width: 1199.98px) {
   .landing-help > h1 {
-    font-size: 50px;
+    font-size: 55px;
+  }
+
+  .header > h1 {
+    font-size: 55px;
   }
 }
 
 @media (min-width: 1200px) {
   .landing-help > h1 {
-    letter-spacing: 15px;
+    letter-spacing: 10px;
   }
 }
