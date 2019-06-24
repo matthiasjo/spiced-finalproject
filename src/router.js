@@ -1,16 +1,17 @@
 import Vue from "vue";
 import Router from "vue-router";
 import Home from "./views/Home.vue";
+import Vue from "vue";
+import BootstrapVue from "bootstrap-vue";
+import "bootstrap/dist/css/bootstrap.css";
+import "bootstrap-vue/dist/bootstrap-vue.css";
+
+Vue.use(BootstrapVue);
 
 Vue.use(Router);
 
 export default new Router({
   routes: [
-    {
-      path: "/",
-      name: "home",
-      component: Home
-    },
     {
       path: "/about",
       name: "about",
@@ -22,10 +23,10 @@ export default new Router({
     },
 
     {
-      path: "/test",
-      name: "test",
+      path: "/",
+      name: "landing",
       component: () =>
-        import(/* webpackChunkName: "about" */ "./views/Test.vue")
+        import(/* webpackChunkName: "about" */ "./views/Landing.vue")
     }
   ]
 });
