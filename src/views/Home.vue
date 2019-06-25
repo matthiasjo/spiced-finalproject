@@ -25,7 +25,6 @@ export default {
     };
   },
   mounted: function() {
-    console.log("mouting Home");
     var self = this;
     axios.get("/getUserData").then(function(resp) {
       if (resp.data.success) {

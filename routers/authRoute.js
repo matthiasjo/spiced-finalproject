@@ -12,7 +12,6 @@ router.route("/sendReg").post(async (req, res) => {
   try {
     const pwHash = await bc.hashPassword(password);
     const userInfo = await db.addUser(first, last, email, pwHash);
-    console.log(userInfo.rows[0].id);
     const hashInfo = await mailhash.encrypt(email);
     const verifyLink = `http://localhost:8080/verify?email=${email}&hash=${
       hashInfo.encrypted
@@ -25,7 +24,6 @@ router.route("/sendReg").post(async (req, res) => {
 });
 
 router.route("/verify/").get(async (req, res) => {
-  console.log(req.query);
   const { email, hash, iv } = req.query;
   const decryptMail = await mailhash.decrypt(hash, iv);
   if (email == decryptMail) {
@@ -96,7 +94,6 @@ router.route("/resetAuth").post(async (req, res) => {
 
 router.route("/resetPass").post(async (req, res) => {
   const { password, email, hash, iv } = req.body;
-  console.log(hash, iv);
   const decryptMail = await mailhash.decrypt(hash, iv);
   if (email == decryptMail) {
     const pwHash = await bc.hashPassword(password);
