@@ -20,6 +20,7 @@ export default new Router({
       component: () =>
         import(/* webpackChunkName: "about" */ "./views/About.vue")
     },
+<<<<<<< HEAD
     {
       path: "/auth",
       name: "auth",
@@ -31,12 +32,20 @@ export default new Router({
       component: () =>
         import(/* webpackChunkName: "resetPass" */ "./components/auth/ResetPass.vue")
     }
+=======
+>>>>>>> Damian
 
-    // {
-    //   path: "/",
-    //   name: "landing",
-    //   component: () =>
-    //     import(/* webpackChunkName: "about" */ "./views/Landing.vue")
-    // }
+    {
+      path: "/",
+      name: "landing",
+      component: () =>
+        import(/* webpackChunkName: "about" */ "./views/Landing.vue")
+    },
+    {
+      path: "/events",
+      name: "events",
+      component: () =>
+        import(/* webpackChunkName: "resetPass" */ "./components/auth/ResetPass.vue")
+    }
   ]
 });

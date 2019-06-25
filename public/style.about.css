@@ -1,0 +1,43 @@
+.about {
+  background-image: url("https://images.unsplash.com/photo-1521055447672-2fa9530db421?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80");
+  display: flex;
+  position: absolute;
+  background-size: cover;
+  min-height: 100vh;
+  background-position: center center;
+  background-attachment: fixed;
+}
+
+.about-text {
+  font-size: 30px;
+  padding: 15%;
+  color: #de791e;
+  text-align: justify;
+}
+
+h1 {
+  text-align: center;
+  color: #6495ed;
+}
+
+/**************** RESPONSIVENESS SMALL ****************/
+@media (max-width: 575.98px) {
+  h1 {
+    font-size: 30px;
+    letter-spacing: 0;
+  }
+  p {
+    font-size: 20px;
+  }
+}
+
+/**************** RESPONSIVENESS MEDIUM ****************/
+@media (min-width: 576px) and (max-width: 767.98px) {
+  h1 {
+    font-size: 50px;
+  }
+
+  p {
+    font-size: 28px;
+  }
+}

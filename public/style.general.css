@@ -1,0 +1,37 @@
+a,
+a:visited {
+  text-decoration: none;
+  color: cornflowerblue;
+}
+
+#nav {
+  font-size: 30px;
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  z-index: 2;
+  margin-top: 2%;
+  font-size: 60px;
+  color: #ff7a00;
+}
+#nav a.router-link-exact-active {
+  color: #9f9f9f;
+}
+
+.nav-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+/**************** RESPONSIVENESS SMALL ****************/
+@media (max-width: 575.98px) {
+  #nav {
+    font-size: 30px;
+  }
+}
+/**************** RESPONSIVENESS Medium ****************/
+@media (min-width: 576px) and (max-width: 767.98px) {
+  #nav {
+    font-size: 40px;
+  }
+}
