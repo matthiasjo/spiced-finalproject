@@ -9,7 +9,7 @@ const cookieSession = require("cookie-session");
 const helmet = require("helmet");
 const s3 = require("./utils/s3");
 const bodyParser = require("body-parser");
-
+const mw = require("./utils/middleware");
 //////////////////// ROUTERS IMPORT \\\\\\\\\\\\\\\\\
 const authRoute = require("./routers/authRoute");
 /////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\
@@ -62,16 +62,16 @@ const uploader = multer({
 app.use(authRoute);
 /////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
-app.get("/cookies", (req, res) => {
-  res.json({ success: true });
-});
-
-app.get("/getUserData", (req, res) => {
-  if (req.session.verified) {
+app.get("/getUserData", mw.userStatus, async (req, res) => {
+  console.log("userStatus", req.userStatus);
+  if (req.userStatus && !req.session.verified) {
+    res.json({ success: true, userInfo: req.userStatus });
+  } else if (req.userStatus && req.session.verified) {
+    console.log("i am here");
     delete req.session.verified;
-    res.json({ verified: true });
+    res.json({ success: true, userInfo: req.userStatus, verified: true });
   } else {
-    res.json({ success: true });
+    res.json({ success: false, error: "the server has some issues" });
   }
 });
 

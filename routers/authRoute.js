@@ -11,11 +11,12 @@ router.route("/sendReg").post(async (req, res) => {
   const { first, last, email, password } = req.body;
   try {
     const pwHash = await bc.hashPassword(password);
-    const userInfo = await db.addUser(first, last, email, pwHash);
+    await db.addUser(first, last, email, pwHash);
     const hashInfo = await mailhash.encrypt(email);
     const verifyLink = `http://localhost:8080/verify?email=${email}&hash=${
       hashInfo.encrypted
     }&iv=${hashInfo.iv}`;
+    console.log("veriflylink", verifyLink);
     await mailer.verifyMail(email, first, last, verifyLink);
     res.json({ success: true, email: email });
   } catch (e) {
