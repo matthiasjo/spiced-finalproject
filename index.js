@@ -11,9 +11,7 @@ const s3 = require("./utils/s3");
 const bodyParser = require("body-parser");
 
 //////////////////// ROUTERS IMPORT \\\\\\\\\\\\\\\\\
-const aboutRouter = require("./routers/aboutRoute");
-const landingRouter = require("./routers/landingRoute");
-const eventsRouter = require("./routers/eventsRoute");
+const authRoute = require("./routers/authRoute");
 /////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
 const app = express();
@@ -60,12 +58,8 @@ const uploader = multer({
   }
 });
 
-////////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\
-
 //////////////////// ROUTERS USE \\\\\\\\\\\\\\\\\
-app.use(aboutRouter);
-app.use(landingRouter);
-app.use(eventsRouter);
+app.use(authRoute);
 /////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
 app.get("/cookies", (req, res) => {
@@ -79,11 +73,6 @@ app.get("/getUserData", (req, res) => {
   } else {
     res.json({ success: true });
   }
-});
-
-app.post("/sendReg", (req, res) => {
-  console.log(req.body);
-  res.json({ success: true });
 });
 
 // app.get("/get-img-info/:id", (req, res) => {

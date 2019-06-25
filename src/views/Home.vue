@@ -10,6 +10,7 @@
 
 <script>
 // @ is an alias to /src
+
 import HelloWorld from "@/components/HelloWorld.vue";
 import axios from "@/axios";
 
@@ -24,6 +25,7 @@ export default {
     };
   },
   mounted: function() {
+    console.log("mouting Home");
     var self = this;
     axios.get("/getUserData").then(function(resp) {
       if (resp.data.success) {

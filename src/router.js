@@ -11,6 +11,11 @@ Vue.use(Router);
 
 export default new Router({
   routes: [
+    // {
+    //   path: "/",
+    //   name: "home",
+    //   component: Home
+    // },
     {
       path: "/about",
       name: "about",
@@ -20,7 +25,6 @@ export default new Router({
       component: () =>
         import(/* webpackChunkName: "about" */ "./views/About.vue")
     },
-<<<<<<< HEAD
     {
       path: "/auth",
       name: "auth",
@@ -31,10 +35,7 @@ export default new Router({
       name: "ResetPass",
       component: () =>
         import(/* webpackChunkName: "resetPass" */ "./components/auth/ResetPass.vue")
-    }
-=======
->>>>>>> Damian
-
+    },
     {
       path: "/",
       name: "landing",
@@ -45,7 +46,7 @@ export default new Router({
       path: "/events",
       name: "events",
       component: () =>
-        import(/* webpackChunkName: "resetPass" */ "./components/auth/ResetPass.vue")
+        import(/* webpackChunkName: "resetPass" */ "./views/Events.vue")
     }
   ]
 });
