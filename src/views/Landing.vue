@@ -1,7 +1,6 @@
 <template>
   <div class="main">
     <div class="header">
-      <h1>DOG RESCUE</h1>
         <div class="title">
             <b-img
             id="header-logo"
@@ -9,7 +8,7 @@
             fluid
             alt="Responsive image"
             ></b-img>
-            <h1>DOG RESCUE</h1>
+            <h1 class="text-danger">DOG RESCUE</h1>
             <b-img
             id="header-logo"
             src="https://www.onlygfx.com/wp-content/uploads/2018/01/grunge-paw-print-2.png"
