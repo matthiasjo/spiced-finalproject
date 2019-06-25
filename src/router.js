@@ -31,7 +31,7 @@ export default new Router({
       path: "/events",
       name: "events",
       component: () =>
-        import(/* webpackChunkName: "about" */ "./views/Events.vue")
+        import(/* webpackChunkName: "resetPass" */ "./components/auth/ResetPass.vue")
     }
   ]
 });
