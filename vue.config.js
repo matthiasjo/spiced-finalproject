@@ -3,12 +3,9 @@ module.exports = {
     proxy: {
       "/*": {
         target: "http://localhost:8081",
-        logLevel: "debug"
-      },
-      "/websocket": {
-        target: "http://localhost:8081",
-        ws: false,
-        changeOrigin: true
+        logLevel: "debug",
+        changeOrigin: true,
+        ws: false
       }
     }
   }

@@ -40,7 +40,7 @@ module.exports.verifyMail = (mail, first, last, verifyLink) =>
                         <h1>Hello ${first} ${last}!</h1>
                         <h2>Thanks for your registration for our final project<h2>
                         <div class="content">
-                            Please verify your Email by clicking this Button: <a href="${verifyLink}"><button>Verify</button></a>
+                            Please verify your Email by clicking this Link: <a href="${verifyLink}">Verify</a>
                         </div>
                         <div class="content">
                             With regards,
