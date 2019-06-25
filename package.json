@@ -22,6 +22,7 @@
     "helmet": "^3.18.0",
     "knox-s3": "^0.9.5",
     "multer": "^1.4.1",
+    "nodemailer": "^6.2.1",
     "normalize.css": "^8.0.1",
     "serve-static": "^1.14.1",
     "spiced-pg": "^1.0.0",
