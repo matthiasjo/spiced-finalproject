@@ -20,12 +20,16 @@ export default new Router({
       component: () =>
         import(/* webpackChunkName: "about" */ "./views/About.vue")
     },
-
     {
-      path: "/",
-      name: "landing",
+      path: "/auth",
+      name: "auth",
+      component: () => import(/* webpackChunkName: "auth" */ "./views/Auth.vue")
+    },
+    {
+      path: "/reset",
+      name: "ResetPass",
       component: () =>
-        import(/* webpackChunkName: "about" */ "./views/Landing.vue")
+        import(/* webpackChunkName: "resetPass" */ "./components/auth/ResetPass.vue")
     }
   ]
 });

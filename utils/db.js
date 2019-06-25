@@ -5,33 +5,33 @@ const db = spicedPg(dbUrl);
 
 ///////////////////////// PLACEHOLDER QUERYS \\\\\\\\\\\\\\\\\\\\\
 
-module.exports.addUser = function addUser(
-  first,
-  last,
-  username,
-  email,
-  pwhash,
-  bio,
-  avatar
-) {
+module.exports.addUser = function addUser(first, last, email, pwhash) {
   if (!/[^a-z]/i.test(first) && !/[^a-z]/i.test(last) && pwhash != "") {
     return db.query(
-      `INSERT INTO users (first, last, username, email, password, bio, avatar) VALUES($1, $2, $3, $4, $5, $6, $7) RETURNING id`,
-      [first, last, username, email, pwhash, bio, avatar]
+      `INSERT INTO users (firstname, lastname, email, password) VALUES($1, $2, $3, $4) RETURNING id`,
+      [first, last, email, pwhash]
     );
   } else {
     return Promise.reject(new Error("Wrong input"));
   }
 };
 
-module.exports.getLoginData = function getLoginData(userinfo) {
-  return db.query(`SELECT * FROM users WHERE email=$1 OR username=$1`, [
-    userinfo
-  ]);
+module.exports.verifyUser = function verifyUser(email) {
+  return db.query(
+    `UPDATE users SET verified = true WHERE email = $1 RETURNING id, verified`,
+    [email]
+  );
 };
 
-module.exports.getUserData = function getUserData(userid) {
-  return db.query(`SELECT * FROM users WHERE id=$1`, [userid]);
+module.exports.updatePass = function updatePass(pwHash, email) {
+  return db.query(
+    `UPDATE users SET password = $1 WHERE email = $2 RETURNING id, admin, verified`,
+    [pwHash, email]
+  );
+};
+
+module.exports.getUserData = function getUserData(email) {
+  return db.query(`SELECT * FROM users WHERE email=$1`, [email]);
 };
 
 module.exports.pushImage = function pushImage(id, avatar) {

@@ -1,0 +1,11 @@
+DROP TABLE IF EXISTS users;
+CREATE TABLE users (
+   id SERIAL PRIMARY KEY,
+   admin BOOLEAN DEFAULT FALSE NOT NULL,
+   verified BOOLEAN DEFAULT FALSE NOT NULL,
+   firstname VARCHAR(255) NOT NULL CHECK (firstname <> ''),
+   lastname VARCHAR(255) NOT NULL CHECK (lastname <> ''),
+   email TEXT NOT NULL UNIQUE CHECK (email <> ''),
+   password VARCHAR(255) NOT NULL,
+   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
