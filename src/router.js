@@ -19,6 +19,20 @@ export default new Router({
       // which is lazy-loaded when the route is visited.
       component: () =>
         import(/* webpackChunkName: "about" */ "./views/About.vue")
+<<<<<<< HEAD
+=======
+    },
+    {
+      path: "/auth",
+      name: "auth",
+      component: () => import(/* webpackChunkName: "auth" */ "./views/Auth.vue")
+    },
+    {
+      path: "/reset",
+      name: "ResetPass",
+      component: () =>
+        import(/* webpackChunkName: "resetPass" */ "./components/auth/ResetPass.vue")
+>>>>>>> beta
     }
 
     // {

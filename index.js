@@ -12,7 +12,7 @@ const bodyParser = require("body-parser");
 
 //////////////////// ROUTERS IMPORT \\\\\\\\\\\\\\\\\
 const aboutRouter = require("./routers/aboutRoute");
-const landingRouter = require("./routers/landingRoute");
+const authRouter = require("./routers/authRoute");
 /////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
 const app = express();
@@ -20,6 +20,7 @@ const port = 8081;
 
 app.use(helmet());
 
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 app.use(
@@ -33,7 +34,7 @@ app.use(
 
 app.use(csurf());
 app.use(function(req, res, next) {
-  res.locals.csrfToken = req.csrfToken();
+  res.cookie("mytoken", req.csrfToken());
   res.setHeader(`X-FRAME-OPTIONS`, `DENY`);
   next();
 });
@@ -62,10 +63,24 @@ const uploader = multer({
 
 //////////////////// ROUTERS USE \\\\\\\\\\\\\\\\\
 app.use(aboutRouter);
-app.use(landingRouter);
+app.use(authRouter);
 /////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
-app.get("/data", (req, res) => {
+app.get("/cookies", (req, res) => {
+  res.json({ success: true });
+});
+
+app.get("/getUserData", (req, res) => {
+  if (req.session.verified) {
+    delete req.session.verified;
+    res.json({ verified: true });
+  } else {
+    res.json({ success: true });
+  }
+});
+
+app.post("/sendReg", (req, res) => {
+  console.log(req.body);
   res.json({ success: true });
 });
 
@@ -111,21 +126,21 @@ app.post("/upload", uploader.single("file"), s3.upload, function(req, res) {
     .catch(err => console.log(err));
 });
 
-app.post("/sendComment", (req, res) => {
-  const { comment, username, id } = req.body;
-  db.pushComment(comment, username, id)
-    .then(qResponse => {
-      const newComment = {
-        username: username,
-        comment: comment,
-        image_id: id,
-        id: qResponse.rows[0].id,
-        created_at: qResponse.rows[0].created_at
-      };
-      res.json(newComment);
-    })
-    .catch(err => console.log(err));
-});
+// app.post("/sendComment", (req, res) => {
+//   const { comment, username, id } = req.body;
+//   db.pushComment(comment, username, id)
+//     .then(qResponse => {
+//       const newComment = {
+//         username: username,
+//         comment: comment,
+//         image_id: id,
+//         id: qResponse.rows[0].id,
+//         created_at: qResponse.rows[0].created_at
+//       };
+//       res.json(newComment);
+//     })
+//     .catch(err => console.log(err));
+// });
 
 app.use(serveStatic("./public"));
 
