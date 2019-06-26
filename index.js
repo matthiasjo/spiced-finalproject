@@ -12,6 +12,7 @@ const bodyParser = require("body-parser");
 
 //////////////////// ROUTERS IMPORT \\\\\\\\\\\\\\\\\
 const authRoute = require("./routers/authRoute");
+const adoptionRoute = require("./routers/adoptionRoute");
 /////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
 const app = express();
@@ -60,6 +61,7 @@ const uploader = multer({
 
 //////////////////// ROUTERS USE \\\\\\\\\\\\\\\\\
 app.use(authRoute);
+app.use(adoptionRoute);
 /////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
 app.get("/cookies", (req, res) => {

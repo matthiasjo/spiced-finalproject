@@ -39,3 +39,18 @@ module.exports.upload = function(req, res, next) {
     }
   });
 };
+
+module.exports.deleteImage = function deleteImage(url) {
+  let fileName = url.replace(
+    "https://s3.amazonaws.com/spiced-salt-image-board/",
+    ""
+  );
+  console.log("fileName", fileName);
+  client
+    .del(fileName)
+    .on("response", res => {
+      console.log("status code", res.statusCode);
+      console.log("header", res.headers);
+    })
+    .end();
+};

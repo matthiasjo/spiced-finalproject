@@ -8,7 +8,6 @@ a:visited {
   font-size: 30px;
   display: flex;
   justify-content: center;
-  position: absolute;
   z-index: 2;
   margin-top: 2%;
   font-size: 60px;
@@ -21,6 +20,9 @@ a:visited {
 .nav-wrapper {
   display: flex;
   justify-content: center;
+  background: #00000059;
+  z-index: 2;
+  width: 100%;
 }
 
 /**************** RESPONSIVENESS SMALL ****************/

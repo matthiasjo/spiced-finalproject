@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="auth">
     <Login v-if="login" @swap-authForm="swapForm" />
     <Register v-else @swap-authForm="swapForm" />
   </div>

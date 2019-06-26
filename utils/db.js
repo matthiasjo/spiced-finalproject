@@ -59,3 +59,105 @@ module.exports.searchAnimals = function searchAnimals(id, name) {
     [id, `%${name}%`, name]
   );
 };
+
+//////////////////// ADOPTION SECTION ////////////////////////
+
+//Get the image for cards
+module.exports.getImage = function getImages() {
+  return db.query(
+    `SELECT *, (
+       SELECT id FROM adoptions
+       ORDER BY id ASC
+       LIMIT 1)
+       AS lowest_id FROM adoptions ORDER BY id DESC LIMIT 10;`
+  );
+};
+
+//Insert image into card  after upload
+module.exports.insertImage = function insertImage(url, name, adoption_status) {
+  return db.query(
+    `
+    INSERT INTO adoptions (url,name, adoption_status )
+    VALUES ($1, $2, $3)
+    RETURNING id
+    `,
+    [url, name, adoption_status]
+  );
+};
+
+//Render Info inside Modal
+module.exports.getModal = function getModal(id) {
+  return db.query(
+    `
+        SELECT * FROM adoptions
+        WHERE id=$1;
+        `,
+    [id]
+  );
+};
+//Load more cards
+exports.getMoreImages = function getMoreImages(id) {
+  return db.query(
+    `SELECT *, (
+       SELECT id FROM adoptions
+       ORDER BY id ASC
+       LIMIT 1)
+       AS lowest_id FROM adoptions
+       WHERE id < $1
+       ORDER BY id DESC
+       LIMIT 5;`,
+    [id]
+  );
+};
+
+module.exports.getImageUrl = function getImageUrl(userId) {
+  return db.query(
+    `
+        SELECT url from adoptions
+        WHERE id =$1
+        `,
+    [userId]
+  );
+};
+
+//Update Profile Picture
+module.exports.uploadPicture = function uploadPicture(id, url) {
+  return db.query(
+    `
+        UPDATE adoptions
+        SET url = $2
+        WHERE id = $1
+        `,
+    [id, url]
+  );
+};
+
+//Insert Dog
+module.exports.insertDog = function insertDog(
+  url,
+  name,
+  adoption_status,
+  dob,
+  sex,
+  breed,
+  size,
+  training,
+  manner
+) {
+  return db.query(
+    `
+    INSERT INTO adoptions (url, name,
+    adoption_status,
+    dob,
+    sex,
+    breed,
+    size,
+    training,
+    manner
+    )
+    VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)
+    RETURNING id
+    `,
+    [url, name, adoption_status, dob, sex, breed, size, training, manner]
+  );
+};

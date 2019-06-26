@@ -3,19 +3,19 @@
     <div>
       <b-jumbotron bg-variant="dark" text-variant="white" border-variant="dark">
         <template id="events-title" slot="header"
-          >BootstrapVue</template
+          >Upcomming Events</template
         >
 
         <template slot="lead">
-          This is a simple hero unit, a simple jumbotron-style component for
-          calling extra attention to featured content or information.
+          Rescueing dogs and puting them upp for adoption requires lots of help
+          and commitment. That's why we always on the look for new volunteers
+          and time to time helpers.
         </template>
 
         <hr class="my-4" />
 
         <p>
-          It uses utility classes for typography and spacing to space content
-          out within the larger container.
+          Check out our upcomming events and join us.
         </p>
       </b-jumbotron>
     </div>
@@ -30,12 +30,50 @@ export default {
   data() {
     return {
       items: [
-        { age: 40, first_name: "Dickerson", last_name: "Macdonald" },
-        { age: 21, first_name: "Larsen", last_name: "Shaw" },
-        { age: 89, first_name: "Geneva", last_name: "Wilson" },
-        { age: 38, first_name: "Jami", last_name: "Carney" }
+        {
+          When: "June 11th, 3PM",
+          What: "Adoption Fair",
+          Where: "Alexanderplatz"
+        },
+        {
+          When: "July 5th, 3PM",
+          What: "Adoption Fair",
+          Where: "Alexanderplatz"
+        },
+        {
+          When: "Augustune 4th, 3PM",
+          What: "Adoption Fair",
+          Where: "Alexanderplatz"
+        },
+        {
+          When: "September 15th, 3PM",
+          What: "Adoption Fair",
+          Where: "Alexanderplatz"
+        },
+        {
+          When: "June 11th, 3PM",
+          What: "Adoption Fair",
+          Where: "Alexanderplatz"
+        },
+        {
+          When: "July 5th, 3PM",
+          What: "Adoption Fair",
+          Where: "Alexanderplatz"
+        },
+        {
+          When: "Augustune 4th, 3PM",
+          What: "Adoption Fair",
+          Where: "Alexanderplatz"
+        },
+        {
+          When: "September 15th, 3PM",
+          What: "Adoption Fair",
+          Where: "Alexanderplatz"
+        }
       ]
     };
   }
 };
 </script>
+
+<style src="../../public/style.events.css" scoped></style>
