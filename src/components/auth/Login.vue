@@ -57,6 +57,7 @@ export default {
         .post("/sendLogin", this.loginForm)
         .then(function(resp) {
           if (resp.data.success) {
+            self.$store.dispatch("loadUserInfo");
             self.$router.push("/");
           } else {
             self.error = resp.data.error;

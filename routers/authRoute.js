@@ -52,6 +52,7 @@ router.route("/sendLogin").post(async (req, res) => {
         res.json({ success: true });
       } else {
         req.session.userId = userData.rows[0].id;
+        console.log("here", req.session.userId);
         res.json({ success: true });
       }
     } else if (checkLogin && !userData.rows[0].verified) {

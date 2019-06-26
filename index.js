@@ -75,6 +75,15 @@ app.get("/getUserData", mw.userStatus, async (req, res) => {
   }
 });
 
+app.get("/logoutUser", async (req, res) => {
+  req.session = null;
+  if (req.session == null) {
+    res.json({ success: true });
+  } else {
+    res.json({ success: false });
+  }
+});
+
 // app.get("/get-img-info/:id", (req, res) => {
 //   db.getImageModal(req.params.id)
 //     .then(qResponse => {
@@ -137,12 +146,6 @@ app.use(serveStatic("./public"));
 
 app.get("*", function(req, res) {
   res.sendFile(__dirname + "/public/index.html");
-});
-
-app.get("/landing", (req, res) => {
-  res.render("landingPage", {
-    layout: "main"
-  });
 });
 
 app.listen(port, () => console.log(`This server is listening on port ${port}`));

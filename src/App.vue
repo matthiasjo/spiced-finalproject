@@ -26,6 +26,7 @@
 
 <script>
 // @ is an alias to /src
+import axios from "@/axios";
 import { mapState } from "vuex";
 
 export default {
@@ -43,6 +44,15 @@ export default {
         setTimeout(() => this.$store.commit("disableVerfify"), 5000);
       }
     });
+    if (this.$route.path == "/logout") {
+      var self = this;
+      axios.get("/logoutUser").then(async function(resp) {
+        if (resp.data.success) {
+          self.$store.dispatch("loadUserInfo");
+          self.$router.push("/");
+        }
+      });
+    }
   },
   computed: mapState(["userInfo", "verified"])
 };
