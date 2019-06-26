@@ -67,7 +67,6 @@ app.get("/getUserData", mw.userStatus, async (req, res) => {
   if (req.userStatus && !req.session.verified) {
     res.json({ success: true, userInfo: req.userStatus });
   } else if (req.userStatus && req.session.verified) {
-    console.log("i am here");
     delete req.session.verified;
     res.json({ success: true, userInfo: req.userStatus, verified: true });
   } else {
@@ -105,7 +104,6 @@ app.get("/logoutUser", async (req, res) => {
 
 app.post("/upload", uploader.single("file"), s3.upload, function(req, res) {
   // If nothing went wrong the file is already in the uploads directory
-  console.log("THIS IS MY CONSOLE LOG", req.body);
   const title = req.body.title;
   const description = req.body.description;
   const username = req.body.username;

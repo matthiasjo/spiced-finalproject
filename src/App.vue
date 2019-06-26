@@ -22,8 +22,6 @@
 
 <style src="../public/style.general.css" scoped></style>
 
-//
-
 <script>
 // @ is an alias to /src
 import axios from "@/axios";
