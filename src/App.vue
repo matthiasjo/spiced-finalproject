@@ -8,7 +8,7 @@
         <router-link class="nav" to="/">Welcome</router-link> |
         <router-link class="nav" to="/about">About</router-link> |
         <router-link class="nav" to="/events">Events</router-link> |
-        <router-link class="nav" to="/adobtion">Adoption</router-link> |
+        <router-link class="nav" to="/adoption">Adoption</router-link> |
         <router-link v-if="userInfo.userId == null" class="nav" to="/auth"
           >Authentication</router-link
         >
