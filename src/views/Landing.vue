@@ -1,8 +1,5 @@
 <template>
   <div class="main">
-    <div v-if="verified">
-      <p>Thank You. Your email has been verified!</p>
-    </div>
     <div class="header">
       <div class="title">
         <b-img
@@ -35,33 +32,17 @@
 <script>
 // @ is an alias to /src
 
-import axios from "@/axios";
+//import axios from "@/axios";
+//import { mapState } from "vuex";
 
 export default {
   name: "landing",
   components: {},
   data: function() {
-    return {
-      verified: false
-    };
+    return {};
   },
-  mounted: function() {
-    var self = this;
-    axios.get("/getUserData").then(function(resp) {
-      if (resp.data.success) {
-        // do something
-      } else if (resp.data.verified) {
-        self.verified = true;
-      }
-    });
-  },
+  mounted: function() {},
   methods: {},
-  updated: function() {
-    this.$nextTick(function() {
-      if (this.verified) {
-        setTimeout(() => (this.verified = false), 5000);
-      }
-    });
-  }
+  updated: function() {}
 };
 </script>

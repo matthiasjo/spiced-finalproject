@@ -20,27 +20,10 @@ export default {
     HelloWorld
   },
   data: function() {
-    return {
-      verified: false
-    };
+    return {};
   },
-  mounted: function() {
-    var self = this;
-    axios.get("/getUserData").then(function(resp) {
-      if (resp.data.success) {
-        // do something
-      } else if (resp.data.verified) {
-        self.verified = true;
-      }
-    });
-  },
+  mounted: function() {},
   methods: {},
-  updated: function() {
-    this.$nextTick(function() {
-      if (this.verified) {
-        setTimeout(() => (this.verified = false), 5000);
-      }
-    });
-  }
+  updated: function() {}
 };
 </script>

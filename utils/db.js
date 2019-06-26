@@ -30,6 +30,10 @@ module.exports.updatePass = function updatePass(pwHash, email) {
   );
 };
 
+module.exports.getUserById = function getUserById(id) {
+  return db.query(`SELECT * FROM users WHERE id=$1`, [id]);
+};
+
 module.exports.getUserData = function getUserData(email) {
   return db.query(`SELECT * FROM users WHERE email=$1`, [email]);
 };

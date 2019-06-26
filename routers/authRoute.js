@@ -11,11 +11,12 @@ router.route("/sendReg").post(async (req, res) => {
   const { first, last, email, password } = req.body;
   try {
     const pwHash = await bc.hashPassword(password);
-    const userInfo = await db.addUser(first, last, email, pwHash);
+    await db.addUser(first, last, email, pwHash);
     const hashInfo = await mailhash.encrypt(email);
     const verifyLink = `http://localhost:8080/verify?email=${email}&hash=${
       hashInfo.encrypted
     }&iv=${hashInfo.iv}`;
+    console.log("veriflylink", verifyLink);
     await mailer.verifyMail(email, first, last, verifyLink);
     res.json({ success: true, email: email });
   } catch (e) {
@@ -51,6 +52,7 @@ router.route("/sendLogin").post(async (req, res) => {
         res.json({ success: true });
       } else {
         req.session.userId = userData.rows[0].id;
+        console.log("here", req.session.userId);
         res.json({ success: true });
       }
     } else if (checkLogin && !userData.rows[0].verified) {

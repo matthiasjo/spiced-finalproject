@@ -9,7 +9,7 @@ const cookieSession = require("cookie-session");
 const helmet = require("helmet");
 const s3 = require("./utils/s3");
 const bodyParser = require("body-parser");
-
+const mw = require("./utils/middleware");
 //////////////////// ROUTERS IMPORT \\\\\\\\\\\\\\\\\
 const authRoute = require("./routers/authRoute");
 const adoptionRoute = require("./routers/adoptionRoute");
@@ -64,16 +64,24 @@ app.use(authRoute);
 app.use(adoptionRoute);
 /////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
-app.get("/cookies", (req, res) => {
-  res.json({ success: true });
+app.get("/getUserData", mw.userStatus, async (req, res) => {
+  console.log("userStatus", req.userStatus);
+  if (req.userStatus && !req.session.verified) {
+    res.json({ success: true, userInfo: req.userStatus });
+  } else if (req.userStatus && req.session.verified) {
+    delete req.session.verified;
+    res.json({ success: true, userInfo: req.userStatus, verified: true });
+  } else {
+    res.json({ success: false, error: "the server has some issues" });
+  }
 });
 
-app.get("/getUserData", (req, res) => {
-  if (req.session.verified) {
-    delete req.session.verified;
-    res.json({ verified: true });
-  } else {
+app.get("/logoutUser", async (req, res) => {
+  req.session = null;
+  if (req.session == null) {
     res.json({ success: true });
+  } else {
+    res.json({ success: false });
   }
 });
 
@@ -98,7 +106,6 @@ app.get("/getUserData", (req, res) => {
 
 app.post("/upload", uploader.single("file"), s3.upload, function(req, res) {
   // If nothing went wrong the file is already in the uploads directory
-  console.log("THIS IS MY CONSOLE LOG", req.body);
   const title = req.body.title;
   const description = req.body.description;
   const username = req.body.username;
@@ -139,12 +146,6 @@ app.use(serveStatic("./public"));
 
 app.get("*", function(req, res) {
   res.sendFile(__dirname + "/public/index.html");
-});
-
-app.get("/landing", (req, res) => {
-  res.render("landingPage", {
-    layout: "main"
-  });
 });
 
 app.listen(port, () => console.log(`This server is listening on port ${port}`));
