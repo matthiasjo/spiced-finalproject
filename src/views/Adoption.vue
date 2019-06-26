@@ -3,56 +3,56 @@
     <div class="adoption-form">
       <form>
         <input
-          id="input"
+          class="input"
           v-model="form.name"
           type="text"
           name="name"
           placeholder=" Dog's name"
         />
         <input
-          id="input"
+          class="input"
           v-model="form.adoption_status"
           type="text"
           name="adoption_status"
           placeholder="adoption_status"
         />
         <input
-          id="input"
+          class="input"
           v-model="form.dob"
           type="date"
           name="dob"
           placeholder="dob"
         />
         <input
-          id="input"
+          class="input"
           v-model="form.sex"
           type="text"
           name="sex"
           placeholder="sex"
         />
         <input
-          id="input"
+          class="input"
           v-model="form.breed"
           type="text"
           name="breed"
           placeholder="breed"
         />
         <input
-          id="input"
+          class="input"
           v-model="form.size"
           type="text"
           name="size "
           placeholder="size in cm "
         />
         <input
-          id="input"
+          class="input"
           v-model="form.training"
           type="text"
           name="training"
           placeholder="How trained is the dog?"
         />
         <input
-          id="input"
+          class="input"
           v-model="form.manner"
           type="text"
           name="manner"
@@ -72,8 +72,8 @@
         </button>
       </form>
     </div>
-    <div class="dog-box">
-      <div v-if="dogs.length > 0" v-for="dog in dogs" :key="dog.id">
+    <div class="dog-box" v-if="dogs.length > 0">
+      <div v-for="dog in dogs" :key="dog.id">
         <b-card
           class="card"
           no-body

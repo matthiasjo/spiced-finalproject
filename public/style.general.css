@@ -20,7 +20,7 @@ a:visited {
 .nav-wrapper {
   display: flex;
   justify-content: center;
-  background: #00000059;
+  background: black;
   z-index: 2;
   width: 100%;
 }
