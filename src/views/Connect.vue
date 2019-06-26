@@ -124,8 +124,14 @@
         >
       </b-modal>
     </div>
-    <Lost v-if="this.$route.path == '/connect/lost'" />
-    <Found v-if="this.$route.path == '/connect/found'" />
+    <Lost
+      :lostAnimals="lostAnimals"
+      v-if="this.$route.path == '/connect/lost'"
+    />
+    <Found
+      :foundAnimals="foundAnimals"
+      v-if="this.$route.path == '/connect/found'"
+    />
   </div>
 </template>
 
@@ -158,7 +164,13 @@ export default {
     };
   },
   mounted: function() {
-    //var self = this;
+    var self = this;
+    axios.get("/get-animals").then(function(resp) {
+      const lostAnimals = resp.data.filter(animal => animal.status == "lost");
+      const foundAnimals = resp.data.filter(animal => animal.status == "found");
+      self.lostAnimals = lostAnimals;
+      self.foundAnimals = foundAnimals;
+    });
   },
   methods: {
     handleFileChange: function(e) {
@@ -181,9 +193,11 @@ export default {
       // if you log formData and get an {}, that's ok
       var self = this;
       axios.post("/upload-connect", formData).then(function(resp) {
-        if (resp.data.success) {
-          self.$bvModal.hide("uploadLostFound");
-          self.animals.push(resp.data);
+        //$bvModal.hide("uploadLostFound");
+        if (resp.data.status == "lost") {
+          self.lostAnimals.push(resp.data);
+        } else {
+          self.foundAnimals.push(resp.data);
         }
       });
     }

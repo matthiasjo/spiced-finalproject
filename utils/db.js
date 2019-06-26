@@ -38,17 +38,6 @@ module.exports.getUserData = function getUserData(email) {
   return db.query(`SELECT * FROM users WHERE email=$1`, [email]);
 };
 
-module.exports.pushImage = function pushImage(id, avatar) {
-  return db.query(`UPDATE users SET avatar = $2 WHERE id = $1`, [id, avatar]);
-};
-
-module.exports.updateInfoSheet = function updateInfoSheet(id, bio) {
-  return db.query(`UPDATE users SET bio = $2 WHERE id = $1 RETURNING bio`, [
-    id,
-    bio
-  ]);
-};
-
 module.exports.searchAnimals = function searchAnimals(id, name) {
   return db.query(
     `SELECT id, first, last, username, avatar
@@ -61,6 +50,62 @@ module.exports.searchAnimals = function searchAnimals(id, name) {
         ORDER BY last
         LIMIT 20`,
     [id, `%${name}%`, name]
+  );
+};
+///////////////////////// LOST & FOUND SECTION \\\\\\\\\\\\\\
+
+module.exports.insertAnimal = function insertAnimal(
+  url,
+  name,
+  species,
+  status,
+  chipped,
+  lastSeen,
+  gender,
+  breed,
+  location,
+  description,
+  age
+) {
+  return db.query(
+    `
+    INSERT INTO animalsearch (url, name,
+    species,
+    status,
+    chipped,
+    lastseen,
+    gender,
+    breed,
+    location,
+    description,
+    age
+    )
+    VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11)
+    RETURNING id
+    `,
+    [
+      url,
+      name,
+      species,
+      status,
+      chipped,
+      lastSeen,
+      gender,
+      breed,
+      location,
+      description,
+      age
+    ]
+  );
+};
+
+module.exports.getAnimals = function getAnimals() {
+  return db.query(
+    `SELECT *, (
+         SELECT id FROM animalsearch
+         ORDER BY id ASC
+         LIMIT 1)
+         AS lowest_id FROM animalsearch ORDER BY id DESC LIMIT 10;`
   );
 };
 
@@ -121,18 +166,6 @@ module.exports.getImageUrl = function getImageUrl(userId) {
         WHERE id =$1
         `,
     [userId]
-  );
-};
-
-//Update Profile Picture
-module.exports.uploadPicture = function uploadPicture(id, url) {
-  return db.query(
-    `
-        UPDATE adoptions
-        SET url = $2
-        WHERE id = $1
-        `,
-    [id, url]
   );
 };
 
