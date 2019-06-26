@@ -55,10 +55,22 @@ export default new Router({
         import(/* webpackChunkName: "adoption" */ "./views/Adoption.vue")
     },
     {
-      path: "/modal",
-      name: "modal",
+      path: "/connect",
+      name: "connect",
       component: () =>
-        import(/* webpackChunkName: "adoption" */ "./components/modal/Modal.vue")
+        import(/* webpackChunkName: "connect" */ "./views/Connect.vue")
+    },
+    {
+      path: "/connect/lost",
+      name: "lost",
+      component: () =>
+        import(/* webpackChunkName: "lost" */ "./views/Connect.vue")
+    },
+    {
+      path: "/connect/found",
+      name: "found",
+      component: () =>
+        import(/* webpackChunkName: "found" */ "./views/Connect.vue")
     }
   ]
 });
