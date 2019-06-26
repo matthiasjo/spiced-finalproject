@@ -10,6 +10,11 @@ form {
   width: 50%;
 }
 /********************CARD SECTION**********************/
+.dog-box {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
 .card img {
   height: 300px;
 }

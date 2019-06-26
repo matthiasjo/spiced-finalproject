@@ -72,26 +72,27 @@
         </button>
       </form>
     </div>
+    <div class="dog-box">
+      <div v-if="dogs.length > 0" v-for="dog in dogs" :key="dog.id">
+        <b-card
+          class="card"
+          no-body
+          style="max-width: 20rem;"
+          :img-src="dog.url"
+          img-alt="Image"
+          img-top
+        >
+          <h4 slot="header">{{ dog.name }}</h4>
 
-    <div v-if="dogs.length > 0" v-for="dog in dogs" :key="dog.id">
-      <b-card
-        class="card"
-        no-body
-        style="max-width: 20rem;"
-        :img-src="dog.url"
-        img-alt="Image"
-        img-top
-      >
-        <h4 slot="header">{{ dog.name }}</h4>
+          <b-card-body>
+            <b-card-title>{{ dog.adoption_status }}</b-card-title>
+          </b-card-body>
 
-        <b-card-body>
-          <b-card-title>{{ dog.adoption_status }}</b-card-title>
-        </b-card-body>
-
-        <b-card-body>
-          <a href="#" class="card-link">Info</a>
-        </b-card-body>
-      </b-card>
+          <b-card-body>
+            <a href="#" class="card-link">Info</a>
+          </b-card-body>
+        </b-card>
+      </div>
     </div>
   </b-container>
 </template>
