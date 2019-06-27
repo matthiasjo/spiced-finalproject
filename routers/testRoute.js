@@ -124,11 +124,11 @@ router
 
 router.route("/adoptProcess").post(async (req, res) => {
   const dogOfInterest = await db.getModal(req.body.dogId);
-  const dogName = dogOfInterest.rows[0].name;
-  const { first, last, email } = req.body.form;
+  const hansi = dogOfInterest.rows[0].name;
+  const { first, last, nameofDog, email } = req.body.form;
 
   try {
-    await mailer.adoptionForm(email, first, last, dogName);
+    //await mailer.adoptionForm(email, first, last);
     res.json({ success: true, email: email });
   } catch (err) {
     console.log(err);

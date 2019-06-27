@@ -8,7 +8,7 @@ CREATE TABLE adoptions(
     dob DATE,
     sex TEXT,
     breed VARCHAR(255),
-    size TEXT,
+    dogsize TEXT,
     training VARCHAR(255),
     manner VARCHAR(255)
 );

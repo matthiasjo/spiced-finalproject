@@ -1,6 +1,28 @@
 # Next Steps
 
-- check landing
-- check about
-- make events
-- Photo upload
+- Adopt (cookies/state im FE)
+  - admin upload 
+  - adoption formular members
+- Modal
+  - Behavior
+    - original status
+    - esc
+- Mailer
+- CSS
+  - landing
+    - background
+    - title
+  - nav
+  - breaking points
+  - login/reg
+    - form
+    - background
+  - lost
+  - adoption
+    - form fields
+    - cards
+  - events
+  - bank
+  - helpus
+- Sites
+  - helpus
