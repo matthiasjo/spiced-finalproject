@@ -57,7 +57,7 @@ router.route("/modal/:id").get(async (req, res) => {
       dob: modalResult.rows[0].dob,
       sex: modalResult.rows[0].sex,
       breed: modalResult.rows[0].breed,
-      size: modalResult.rows[0].size,
+      dogsize: modalResult.rows[0].dogsize,
       training: modalResult.rows[0].training,
       manner: modalResult.rows[0].manner
     };
@@ -76,11 +76,11 @@ router
       adoption_status,
       dob,
       sex,
-      size,
+      dogsize,
       training,
       manner
     } = req.body;
-    console.log(breed, name, adoption_status, dob, sex, size, training, manner);
+    console.log(req.body);
     // const imgUrl = await db.getImageUrl();
     // if (imgUrl.rows[0].url) {
     //   await s3.deleteImage(imgUrl.rows[0].url);
@@ -94,7 +94,7 @@ router
       dob,
       sex,
       breed,
-      size,
+      dogsize,
       training,
       manner
     )
@@ -107,7 +107,7 @@ router
           dob: dob,
           sex: sex,
           breed: breed,
-          size: size,
+          dogsize: dogsize,
           training: training,
           manner: manner
         };

@@ -144,7 +144,7 @@ module.exports.insertDog = function insertDog(
   dob,
   sex,
   breed,
-  size,
+  dogsize,
   training,
   manner
 ) {
@@ -155,13 +155,13 @@ module.exports.insertDog = function insertDog(
     dob,
     sex,
     breed,
-    size,
+    dogsize,
     training,
     manner
     )
     VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)
     RETURNING id
     `,
-    [url, name, adoption_status, dob, sex, breed, size, training, manner]
+    [url, name, adoption_status, dob, sex, breed, dogsize, training, manner]
   );
 };

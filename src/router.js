@@ -53,12 +53,6 @@ export default new Router({
       name: "adoption",
       component: () =>
         import(/* webpackChunkName: "adoption" */ "./views/Adoption.vue")
-    },
-    {
-      path: "/modal",
-      name: "modal",
-      component: () =>
-        import(/* webpackChunkName: "adoption" */ "./components/modal/Modal.vue")
     }
   ]
 });
