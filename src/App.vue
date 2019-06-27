@@ -8,7 +8,6 @@
         <router-link class="nav" to="/">Welcome</router-link> |
         <router-link class="nav" to="/about">About</router-link> |
         <router-link class="nav" to="/events">Events</router-link> |
-
         <router-link class="nav" to="/connect/lost">Lost & Found</router-link> |
         <router-link class="nav" to="/adobtion">Adoption</router-link> |
 

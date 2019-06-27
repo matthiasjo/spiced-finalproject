@@ -3,7 +3,11 @@
     <div>
       <router-link class="nav" to="/connect/lost">Lost</router-link> |
       <router-link class="nav" to="/connect/found">Found</router-link>
-      <button id="show-btn" @click="$bvModal.show('uploadLostFound')">
+      <button
+        v-if="userInfo.id != null"
+        id="show-btn"
+        @click="$bvModal.show('uploadLostFound')"
+      >
         Upload
       </button>
 
@@ -142,6 +146,7 @@
 import axios from "@/axios";
 import Lost from "@/components/Lost";
 import Found from "@/components/Found";
+import { mapState } from "vuex";
 
 export default {
   name: "Connect",
@@ -206,7 +211,8 @@ export default {
         }
       });
     }
-  }
+  },
+  computed: mapState(["userInfo", "verified"])
 };
 </script>
 
