@@ -53,7 +53,6 @@ export default new Router({
       name: "adoption",
       component: () =>
         import(/* webpackChunkName: "adoption" */ "./views/Adoption.vue")
-<<<<<<< HEAD
     },
     {
       path: "/connect",
@@ -72,8 +71,6 @@ export default new Router({
       name: "found",
       component: () =>
         import(/* webpackChunkName: "found" */ "./views/Connect.vue")
-=======
->>>>>>> damian
     }
   ]
 });
