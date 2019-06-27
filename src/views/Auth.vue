@@ -28,3 +28,4 @@ export default {
   }
 };
 </script>
+<style src="../../public/style.auth.css" scoped></style>

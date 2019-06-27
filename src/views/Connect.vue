@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="lost-box">
     <div>
       <router-link class="nav" to="/connect/lost">Lost</router-link> |
       <router-link class="nav" to="/connect/found">Found</router-link>
@@ -210,4 +210,4 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style src="../../public/style.lost.css" scoped></style>
