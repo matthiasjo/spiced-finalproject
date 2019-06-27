@@ -4,7 +4,7 @@
       <router-link class="nav" to="/connect/lost">Lost</router-link> |
       <router-link class="nav" to="/connect/found">Found</router-link>
       <button
-        v-if="userInfo.id != null"
+        v-if="userInfo.userId != null"
         id="show-btn"
         @click="$bvModal.show('uploadLostFound')"
       >
