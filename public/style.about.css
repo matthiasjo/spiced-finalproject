@@ -1,3 +1,8 @@
+@font-face {
+  src: url("/fonts/DancingScript-Regular.otf");
+  font-family: dancing;
+}
+
 .about {
   background-image: url("https://images.unsplash.com/photo-1521055447672-2fa9530db421?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80");
   display: flex;
@@ -17,7 +22,9 @@
 
 h1 {
   text-align: center;
-  color: #6495ed;
+  color: white;
+  font-family: dancing;
+  font-size: 80px;
 }
 
 /**************** RESPONSIVENESS SMALL ****************/

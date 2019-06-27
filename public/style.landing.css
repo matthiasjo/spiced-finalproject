@@ -1,3 +1,8 @@
+@font-face {
+  src: url("/fonts/DancingScript-Regular.otf");
+  font-family: dancing;
+}
+
 #b-container {
   margin: 0;
   padding: 0;
@@ -27,12 +32,16 @@ img {
   margin-bottom: 15px;
   letter-spacing: 10px;
   margin: 0 20px;
+  font-family: dancing;
+  color: #0768fb;
 }
 
 h3 {
   color: cornflowerblue;
-  font-size: 30px;
+  font-size: 36px;
   text-align: center;
+  color: black;
+  font-family: dancing;
 }
 
 a,
@@ -68,9 +77,13 @@ a:visited {
 }
 
 .landing-help > h1 {
-  color: white;
+  color: #0768fb;
   font-size: 60px;
-  font-family: -webkit-pictograph;
+  font-family: dancing;
+}
+
+#help-link {
+  color: #ff7a00;
 }
 
 /**************** RESPONSIVENESS SMALL ****************/

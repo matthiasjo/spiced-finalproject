@@ -4,11 +4,19 @@
       <p>A email has been sent to {{ email }}</p>
     </div>
     <div v-if="error">{{ error }}</div>
-    <form v-on:submit.prevent="resetAuth">
-      <input type="email" name="email" required v-model="resetForm.email" />
-      <button type="submit">Reset Password</button>
+    <form id="login-form" v-on:submit.prevent="resetAuth">
+      <input
+        class="input-login"
+        type="email"
+        name="email"
+        required
+        v-model="resetForm.email"
+      />
+      <b-button id="btn-sign" type="submit">Reset Password</b-button>
     </form>
-    <button v-on:click.prevent="$emit('swap-loginForm')">Go back?</button>
+    <b-button id="btn-sign-two" v-on:click.prevent="$emit('swap-loginForm')">
+      Go back?
+    </b-button>
   </div>
 </template>
 
@@ -49,19 +57,5 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
-</style>
+
+<style src="../../../public/style.reset.css" scoped></style>

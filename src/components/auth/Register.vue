@@ -1,21 +1,42 @@
 <template>
-  <div class="hello">
+  <div class="hello" id="reg-form">
     <div v-if="emailSend">
       <p>A verification email has been sent to {{ email }}</p>
     </div>
-    <form v-on:submit.prevent="sendReg">
-      <input type="text" name="first" required v-model="regForm.first" />
-      <input type="text" name="last" required v-model="regForm.last" />
-      <input type="email" name="email" required v-model="regForm.email" />
+    <form id="register-form" v-on:submit.prevent="sendReg">
       <input
+        class="input-login"
+        type="text"
+        name="first"
+        required
+        v-model="regForm.first"
+      />
+      <input
+        class="input-login"
+        type="text"
+        name="last"
+        required
+        v-model="regForm.last"
+      />
+      <input
+        class="input-login"
+        type="email"
+        name="email"
+        required
+        v-model="regForm.email"
+      />
+      <input
+        class="input-login"
         type="password"
         name="password"
         required
         v-model="regForm.password"
       />
-      <button type="submit">Submit</button>
+      <b-button id="btn-sign-two" type="submit">Submit</b-button>
     </form>
-    <button v-on:click.prevent="$emit('swap-authForm')">Sign in?</button>
+    <b-button id="btn-sign" v-on:click.prevent="$emit('swap-authForm')">
+      Sign in?
+    </b-button>
   </div>
 </template>
 
@@ -56,19 +77,4 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
-</style>
+<style src="../../../public/style.register.css" scoped></style>

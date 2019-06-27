@@ -1,22 +1,33 @@
 <template>
   <div class="hello" v-if="reset === false">
     <div v-if="error">{{ error }}</div>
-    <form v-on:submit.prevent="sendLogin">
-      <input type="email" name="email" required v-model="loginForm.email" />
+    <form id="login-form" v-on:submit.prevent="sendLogin">
       <input
+        class="input-login"
+        type="email"
+        name="email"
+        required
+        v-model="loginForm.email"
+      />
+      <input
+        class="input-login"
         type="password"
         name="password"
         required
         v-model="loginForm.password"
       />
-      <button type="submit">Sign In</button>
+      <b-button id="btn-sign-two" type="submit">Sign In</b-button>
     </form>
-    <button v-on:click.prevent="$emit('swap-authForm')">Sign Up?</button>
+    <b-button id="btn-sign" v-on:click.prevent="$emit('swap-authForm')"
+      >Sign Up?</b-button
+    >
     <div>
-      <button v-on:click.prevent="resetForm()">Forgot your password?</button>
+      <b-button id="btn-sign" v-on:click.prevent="resetForm()"
+        >Forgot your password?</b-button
+      >
     </div>
   </div>
-  <div v-else-if="reset === true">
+  <div id="reset-form" v-else-if="reset === true">
     <Reset @swap-loginForm="resetForm" />
   </div>
 </template>
@@ -70,19 +81,4 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
-</style>
+<style src="../../../public/style.login.css" scoped></style>

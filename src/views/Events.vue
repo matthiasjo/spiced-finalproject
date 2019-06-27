@@ -1,6 +1,6 @@
 <template>
-  <b-container fluid>
-    <div>
+  <b-container class="events" fluid>
+    <div class="jumbo">
       <b-jumbotron bg-variant="dark" text-variant="white" border-variant="dark">
         <template id="events-title" slot="header"
           >Upcomming Events</template
@@ -19,7 +19,7 @@
         </p>
       </b-jumbotron>
     </div>
-    <div>
+    <div class="b-table">
       <b-table striped hover :items="items"></b-table>
     </div>
   </b-container>

@@ -1,0 +1,82 @@
+@font-face {
+  src: url("/fonts/DancingScript-Regular.otf");
+  font-family: dancing;
+}
+
+h3 {
+  margin: 40px 0 0;
+}
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+li {
+  display: inline-block;
+  margin: 0 10px;
+}
+a {
+  color: #42b983;
+}
+.input-login {
+  width: 100%;
+  height: 50px;
+}
+#btn-sign,
+#btn-sign-two {
+  font-size: 24px;
+  font-family: dancing;
+  padding: 0;
+  font-size: 30px;
+}
+
+#btn-sign {
+  align-self: center;
+  width: 100%;
+  margin-top: 1%;
+  margin-bottom: 1%;
+  background-color: #ff7a00;
+}
+
+#btn-sign-two {
+  background-color: #6495ed;
+  width: 100%;
+}
+
+/**************** RESPONSIVENESS SMALL ****************/
+@media (max-width: 575.98px) {
+  input,
+  button,
+  .input-login,
+  #btn-sign,
+  #btn-sign-two {
+    height: 50px;
+    width: 200px;
+    font-size: 16px;
+  }
+  #reset-form {
+    left: 25%;
+  }
+}
+
+/**************** RESPONSIVENESS Medium ****************/
+@media (min-width: 768px) and (max-width: 991.98px) {
+  input,
+  button,
+  .input-login,
+  #btn-sign,
+  #btn-sign-two {
+    height: 40px;
+    width: 500px;
+    font-size: 16px;
+  }
+  .input-login {
+    width: 500px;
+  }
+
+  #btn-sign {
+    align-self: flex-start;
+  }
+  #reg-form {
+    left: 20%;
+  }
+}
