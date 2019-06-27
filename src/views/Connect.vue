@@ -1,11 +1,12 @@
 <template>
   <div>
     <div>
-      <router-link class="nav" to="/connect/found">Lost</router-link> |
-      <router-link class="nav" to="/connect/lost">Found</router-link>
+      <router-link class="nav" to="/connect/lost">Lost</router-link> |
+      <router-link class="nav" to="/connect/found">Found</router-link>
       <button id="show-btn" @click="$bvModal.show('uploadLostFound')">
         Upload
       </button>
+
       <b-modal id="uploadLostFound" hide-footer>
         <template slot="modal-title">
           Lost & Found Uploader
@@ -62,6 +63,7 @@
             <label for="lastSeen">Last Seen</label>
             <input type="date" name="" value="" v-model="form.lastSeen" />
             <label for="location">Location</label>
+
             <input
               type="text"
               name=""
@@ -173,6 +175,9 @@ export default {
     });
   },
   methods: {
+    handleSearch(event) {
+      console.log("handleSearch", event);
+    },
     handleFileChange: function(e) {
       this.form.file = e.target.files[0];
     },

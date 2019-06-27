@@ -16,10 +16,44 @@
         </b-card-body>
 
         <b-card-body>
-          <a href="#" class="card-link">Info</a>
+          <a
+            class="card-link"
+            v-b-modal.modal-center
+            @click.prevent="clickedAnimal(animal)"
+            href="#"
+            >Info</a
+          >
         </b-card-body>
       </b-card>
     </div>
+    <b-modal
+      v-if="modalAnimal"
+      id="modal-center"
+      centered
+      title="Found Pet"
+      hide-footer
+    >
+      <div class="dog-card">
+        <img
+          class="modal-img"
+          :src="modalAnimal.url"
+          alt=""
+          height="250px"
+          width="250px"
+        />
+        <p class="my-4">Name: {{ modalAnimal.name }}</p>
+        <p class="my-4">Status:{{ modalAnimal.status }}</p>
+        <p class="my-4">Chipped:{{ modalAnimal.chipped }}</p>
+        <p class="my-4">Age: {{ modalAnimal.age }}</p>
+        <p class="my-4">Gender: {{ modalAnimal.gender }}</p>
+        <p class="my-4">Breed: {{ modalAnimal.breed }}</p>
+        <p class="my-4">Last seen: {{ modalAnimal.lastSeen }}</p>
+        <p class="my-4">Description: {{ modalAnimal.description }}</p>
+        <p class="my-4">Location: {{ modalAnimal.location }}</p>
+
+        <b-button v-on:click.prevent="">Contact</b-button>
+      </div>
+    </b-modal>
   </div>
 </template>
 
@@ -35,10 +69,17 @@ export default {
     foundAnimals: Array
   },
   data: function() {
-    return {};
+    return {
+      modalAnimal: {},
+      show: false
+    };
   },
   mounted: function() {},
-  methods: {},
+  methods: {
+    clickedAnimal: function(animal) {
+      this.modalAnimal = animal;
+    }
+  },
   updated: function() {}
 };
 </script>
