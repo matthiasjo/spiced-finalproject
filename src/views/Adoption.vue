@@ -1,7 +1,7 @@
 <template lang="html">
   <b-container fluid>
     <div class="adoption-form">
-      <form>
+      <form v-if="userInfo.admin == true">
         <input
           class="input"
           v-model="form.name"
@@ -109,7 +109,7 @@
       centered
       title="BootstrapVue"
       ok-title="Adopt"
-      hide-footer="true"
+      hide-footer
     >
       <div class="dog-card" v-if="adoptform == true">
         <img
@@ -127,66 +127,77 @@
         <p class="my-4">Size(h, w): {{ modalDog.dogsize }}</p>
         <p class="my-4">Training: {{ modalDog.training }}</p>
         <p class="my-4">Manner: {{ modalDog.manner }}</p>
-        <b-button v-on:click.prevent="adoptform = false">Adopt Me</b-button>
+
+        <b-button
+          v-if="userInfo.userId != null"
+          v-on:click.prevent="adoptform = false"
+          >Adopt Me</b-button
+        >
+
+        <p v-else>Please register to contact us about adopting a dog</p>
       </div>
+
       <div class="adopt-form-box" v-if="adoptform == false">
         <h1>Contact Us For Adoption Details</h1>
-        <form class="adopt-form" method="post">
+        <div class="" v-if="emailSend == true">
+          <p>An email has been send to us and a copy to {{ email }}!</p>
+        </div>
+        <form v-if="modalDog.id" class="adopt-form" method="post">
           <input
             class="input"
             type="text"
             name="first"
             placeholder=" First Name"
-            v-model="form.first"
+            v-model="adoptProcess.first"
           />
           <input
             class="input"
             type="text"
             name="last"
             placeholder=" Last Name"
-            v-model="form.last"
+            v-model="adoptProcess.last"
           />
           <input
             class="input"
             type="text"
             name="street"
             placeholder="Street and House #"
-            v-model="form.street"
+            v-model="adoptProcess.street"
           />
           <input
             class="input"
             type="text"
             name="zipcode"
             placeholder="Zipcode"
-            v-model="form.zipcode"
+            v-model="adoptProcess.zipcode"
           />
           <input
             class="input"
             type="text"
             name="city"
             placeholder="City"
-            v-model="form.city"
+            v-model="adoptProcess.city"
           />
           <input
             class="input"
             type="text"
             name="state"
             placeholder="State"
-            v-model="form.state"
+            v-model="adoptProcess.state"
           />
           <input
             class="input"
             type="text"
             name="phone"
             placeholder="Phone/Mobile"
-            v-model="form.phone"
+            v-model="adoptProcess.phone"
           />
           <input
             class="input"
             type="email"
             name="email"
             placeholder="example@domain.com"
-            v-model="form.email"
+            v-model="adoptProcess.email"
           />
           <p>Dog Owner Experience</p>
           <select name="experience" v-model="form.experience">
@@ -208,7 +219,7 @@
             <option value="House without garden">House without garden</option>
             <option value="House with garden">House with garden</option>
           </select>
-          <b-button>Submit</b-button>
+          <b-button v-on:click.prevent="adopt">Submit</b-button>
           <b-button v-on:click.prevent="adoptform = true">Cancel</b-button>
         </form>
       </div>
@@ -219,16 +230,20 @@
 <script>
 // @ is an alias to /src
 import axios from "@/axios";
+import { mapState } from "vuex";
 
 export default {
   name: "Adoption",
   components: {},
   data: function() {
     return {
+      email: "",
+      emailSend: false,
       modalDog: {},
       dogs: [],
       show: false,
       adoptform: true,
+      adoptProcess: {},
 
       form: {
         name: "",
@@ -259,6 +274,7 @@ export default {
     },
     clickedDog: function(dog) {
       this.modalDog = dog;
+      console.log("MODADLDOG", this.modalDog.id);
     },
     uploadFile: function() {
       var formData = new FormData();
@@ -277,8 +293,25 @@ export default {
         console.log("RESP_UPLOAD", resp);
         self.dogs.push(resp.data);
       });
+    },
+    adopt: function() {
+      var self = this;
+      console.log("ADOPTPROCESS", this.adoptProcess);
+      axios
+        .post("/adoptProcess", {
+          form: this.adoptProcess,
+          dogId: this.modalDog.id
+        })
+        .then(function(resp) {
+          if (resp.data.success) {
+            self.emailSend = true;
+            self.email = resp.data.email;
+          }
+        })
+        .catch(err => console.log(err));
     }
-  }
+  },
+  computed: mapState(["userInfo", "verified"])
 };
 </script>
 
