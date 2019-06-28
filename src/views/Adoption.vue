@@ -108,10 +108,12 @@
           </b-card>
         </div>
       </div>
+
       <b-modal
+        class="adopt-modal"
         id="modal-center"
         centered
-        title="BootstrapVue"
+        title="Info Sheet"
         ok-title="Adopt"
         hide-footer
       >
@@ -133,6 +135,7 @@
           <p class="my-4">Manner: {{ modalDog.manner }}</p>
 
           <b-button
+            id="adopt-button"
             v-if="userInfo.userId != null"
             v-on:click.prevent="adoptform = false"
             >Adopt Me</b-button
@@ -142,11 +145,16 @@
         </div>
 
         <div class="adopt-form-box" v-if="adoptform == false">
-          <h1>Contact Us For Adoption Details</h1>
+          <h1 id="contact-us">Contact Us For Adoption Details</h1>
           <div class="" v-if="emailSend == true">
             <p>An email has been send to us and a copy to {{ email }}!</p>
           </div>
-          <form v-if="modalDog.id" class="adopt-form" method="post">
+          <form
+            v-if="modalDog.id"
+            class="adopt-form"
+            id="adopt-form-modal"
+            method="post"
+          >
             <input
               class="input"
               type="text"
@@ -204,7 +212,11 @@
               v-model="adoptProcess.email"
             />
             <p>Dog Owner Experience</p>
-            <select name="experience" v-model="form.experience">
+            <select
+              class="adopt-select"
+              name="experience"
+              v-model="form.experience"
+            >
               <option value="More than 10 Years">More than 10 Year</option>
               <option value="5-10 Years">5-10 Years</option>
               <option value="3-5 Years">3-5 Years</option>
@@ -213,18 +225,22 @@
               <option value="None">None</option>
             </select>
             <p>Experience with "listed" Dogs (Pitbull, Rotweiler, Doberman)</p>
-            <select name="listed" v-model="form.listed">
+            <select class="adopt-select" name="listed" v-model="form.listed">
               <option value="Yes">Yes</option>
               <option value="No">No</option>
             </select>
             <p>What is your living situation</p>
-            <select name="housing" v-model="form.housing">
+            <select class="adopt-select" name="housing" v-model="form.housing">
               <option value="Flat">Flat</option>
               <option value="House without garden">House without garden</option>
               <option value="House with garden">House with garden</option>
             </select>
-            <b-button v-on:click.prevent="adopt">Submit</b-button>
-            <b-button v-on:click.prevent="adoptform = true">Cancel</b-button>
+            <b-button class="adopt-btn" v-on:click.prevent="adopt"
+              >Submit</b-button
+            >
+            <b-button class="adopt-btn" v-on:click.prevent="adoptform = true"
+              >Cancel</b-button
+            >
           </form>
         </div>
       </b-modal>

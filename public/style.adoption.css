@@ -98,7 +98,8 @@ input {
 
 .card h4,
 .adopt-stat,
-a {
+a,
+#adopt-button {
   font-size: 30px;
 }
 
@@ -108,4 +109,29 @@ a {
 
 /********************MODAL SECTION**********************/
 .modal-img {
+  width: 450px;
+  border: 3px solid #ff7a00c4;
+}
+
+.dog-card {
+  font-family: dancing;
+}
+
+#adopt-button {
+  width: 100%;
+  height: 50px;
+  background: #6495ed;
+  border: 3px solid #ff7a00c4;
+  padding: 0;
+}
+
+#adopt-form-modal,
+.adopt-select,
+.input,
+.adopt-btn {
+  width: 100%;
+}
+
+#contact-us {
+  font-family: dancing;
 }
