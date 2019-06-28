@@ -1,7 +1,7 @@
 <template>
   <div class="hello" id="reg-form">
     <div v-if="emailSend">
-      <p>A verification email has been sent to {{ email }}</p>
+      <h1>A verification email has been sent to {{ email }}</h1>
     </div>
     <form id="register-form" v-on:submit.prevent="sendReg">
       <input
@@ -9,6 +9,7 @@
         type="text"
         name="first"
         required
+        placeholder="First Name"
         v-model="regForm.first"
       />
       <input
@@ -16,6 +17,7 @@
         type="text"
         name="last"
         required
+        placeholder="Last Name"
         v-model="regForm.last"
       />
       <input
@@ -23,6 +25,7 @@
         type="email"
         name="email"
         required
+        placeholder="Email"
         v-model="regForm.email"
       />
       <input
@@ -30,6 +33,7 @@
         type="password"
         name="password"
         required
+        placeholder="Password"
         v-model="regForm.password"
       />
       <b-button id="btn-sign-two" type="submit">Submit</b-button>

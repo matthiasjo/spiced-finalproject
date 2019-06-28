@@ -28,6 +28,11 @@ button {
   left: 20%;
 }
 
+#reg-form h1 {
+  font-family: dancing;
+  color: #ff7a00;
+}
+
 #btn-sign,
 #btn-sign-two {
   font-size: 24px;
@@ -117,7 +122,7 @@ button {
 
 @media (min-width: 1200px) {
   #reg-form {
-    left: 10%;
+    left: 25%;
   }
   input,
   button,

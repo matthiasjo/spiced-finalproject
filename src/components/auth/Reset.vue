@@ -10,6 +10,7 @@
         type="email"
         name="email"
         required
+        placeholder="Email"
         v-model="resetForm.email"
       />
       <b-button id="btn-sign" type="submit">Reset Password</b-button>

@@ -13,6 +13,7 @@
   min-height: 100vh;
   background-position: center center;
   background-attachment: fixed;
+  width: 100%;
 }
 
 .adoption-form {

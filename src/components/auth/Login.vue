@@ -7,6 +7,7 @@
         type="email"
         name="email"
         required
+        placeholder="Email"
         v-model="loginForm.email"
       />
       <input
@@ -14,6 +15,7 @@
         type="password"
         name="password"
         required
+        placeholder="Password"
         v-model="loginForm.password"
       />
       <b-button id="btn-sign-two" type="submit">Sign In</b-button>
