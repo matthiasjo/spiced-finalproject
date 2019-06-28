@@ -58,16 +58,16 @@ button {
   .input-login,
   #btn-sign,
   #btn-sign-two {
-    height: 20px;
-    width: 200px;
+    height: 30px;
+    width: 250px;
     font-size: 13px;
   }
   .input-login {
-    width: 200px;
+    width: 250px;
   }
 
   #btn-sign {
-    width: 200px;
+    width: 250px;
     align-self: flex-start;
   }
   #log {
@@ -141,5 +141,8 @@ button {
   #btn-sign-two,
   #btn-sign {
     font-size: 34px;
+  }
+  #log {
+    left: 35%;
   }
 }

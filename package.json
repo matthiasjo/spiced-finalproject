@@ -33,6 +33,7 @@
     "vue-mapbox": "^0.4.1",
     "vue-mapbox-geocoder": "^0.2.0",
     "vue-router": "^3.0.3",
+    "vue2-google-maps": "^0.10.6",
     "vuex": "^3.0.1"
   },
   "devDependencies": {
