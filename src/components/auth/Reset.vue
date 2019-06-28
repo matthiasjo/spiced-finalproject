@@ -4,7 +4,7 @@
       <p>A email has been sent to {{ email }}</p>
     </div>
     <div v-if="error">{{ error }}</div>
-    <form id="login-form" v-on:submit.prevent="resetAuth">
+    <form v-on:submit.prevent="resetAuth">
       <input
         class="input-login"
         type="email"

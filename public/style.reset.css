@@ -49,12 +49,9 @@ a {
   .input-login,
   #btn-sign,
   #btn-sign-two {
-    height: 50px;
+    height: 40px;
     width: 200px;
     font-size: 16px;
-  }
-  #reset-form {
-    left: 25%;
   }
 }
 
@@ -69,14 +66,16 @@ a {
     width: 500px;
     font-size: 16px;
   }
-  .input-login {
+}
+/**************** RESPONSIVENESS Big ****************/
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  input,
+  button,
+  .input-login,
+  #btn-sign,
+  #btn-sign-two {
+    height: 75px;
     width: 500px;
-  }
-
-  #btn-sign {
-    align-self: flex-start;
-  }
-  #reg-form {
-    left: 20%;
+    font-size: 32px;
   }
 }

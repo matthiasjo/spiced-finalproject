@@ -1,5 +1,5 @@
 <template>
-  <div class="hello" v-if="reset === false">
+  <div class="hello" id="log" v-if="reset === false">
     <div v-if="error">{{ error }}</div>
     <form id="login-form" v-on:submit.prevent="sendLogin">
       <input
@@ -21,11 +21,10 @@
     <b-button id="btn-sign" v-on:click.prevent="$emit('swap-authForm')"
       >Sign Up?</b-button
     >
-    <div>
-      <b-button id="btn-sign" v-on:click.prevent="resetForm()"
-        >Forgot your password?</b-button
-      >
-    </div>
+
+    <b-button id="btn-sign" v-on:click.prevent="resetForm()"
+      >Forgot your password?</b-button
+    >
   </div>
   <div id="reset-form" v-else-if="reset === true">
     <Reset @swap-loginForm="resetForm" />
