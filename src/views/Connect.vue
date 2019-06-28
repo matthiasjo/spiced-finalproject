@@ -1,22 +1,22 @@
 <template>
   <div class="connect">
-    <div class="lost-box">
-      <div class="router-lost">
-        <div class="links-lost">
-          <router-link class="nav" to="/connect/lost">Lost</router-link> |
-          <router-link class="nav" to="/connect/found">Found</router-link>
-        </div>
+    <div class="router-lost">
+      <div class="links-lost">
+        <router-link class="nav" to="/connect/lost">Lost</router-link> |
+        <router-link class="nav" to="/connect/found">Found</router-link>
+      </div>
 
-        <div id="lost-found-btn">
-          <b-button
-            class="doggy-btn"
-            v-if="userInfo.userId != null"
-            id="show-btn"
-            @click="$bvModal.show('uploadLostFound')"
-          >
-            Upload Details
-          </b-button>
-        </div>
+      <div id="lost-found-btn">
+        <b-button
+          class="doggy-btn"
+          v-if="userInfo.userId != null"
+          id="show-btn"
+          @click="$bvModal.show('uploadLostFound')"
+        >
+          Upload Details
+        </b-button>
+      </div>
+      <div class="lost-box">
         <b-modal id="uploadLostFound" hide-footer>
           <template slot="modal-title">
             Lost & Found Uploader

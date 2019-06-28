@@ -1,0 +1,31 @@
+@font-face {
+  src: url("/fonts/DancingScript-Regular.otf");
+  font-family: dancing;
+}
+.lost-box {
+  position: absolute;
+  top: 15%;
+  left: 25%;
+}
+
+.dog-box {
+  display: flex;
+  position: absolute;
+  top: 145%;
+  left: -100%;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.card {
+  margin: 25px;
+  font-family: dancing;
+  border: 3px solid #6495ed;
+  background: #ff7a00c4;
+  text-align: center;
+}
+
+card h4,
+a {
+  font-size: 30px;
+}
