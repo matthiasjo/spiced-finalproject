@@ -1,151 +1,158 @@
 <template>
-  <div class="lost-box">
-    <div>
-      <router-link class="nav" to="/connect/lost">Lost</router-link> |
-      <router-link class="nav" to="/connect/found">Found</router-link>
-      <button
-        v-if="userInfo.userId != null"
-        id="show-btn"
-        @click="$bvModal.show('uploadLostFound')"
-      >
-        Upload
-      </button>
-
-      <b-modal id="uploadLostFound" hide-footer>
-        <template slot="modal-title">
-          Lost & Found Uploader
-        </template>
-        <div class="d-block text-center">
-          <h2>Please add a lost or found Pet</h2>
-          <form class="">
-            <label for="spiecies">Spiecies</label>
-            <input
-              type="text"
-              name="spiecies"
-              value=""
-              placeholder="species"
-              v-model="form.species"
-            />
-            <fieldset>
-              <label for="status">Status</label>
-              <input
-                type="radio"
-                id="lost"
-                name="status"
-                value="lost"
-                v-model="form.status"
-              />
-              <label for="lost">Lost</label>
-              <input
-                type="radio"
-                id="found"
-                name="status"
-                value="found"
-                v-model="form.status"
-              />
-              <label for="found">Found</label>
-            </fieldset>
-            <label for="chipped">Chipped</label>
-            <fieldset>
-              <input
-                type="radio"
-                id="chipped-yes"
-                name="chipped"
-                value="yes"
-                v-model="form.chipped"
-              />
-              <label for="chipped-yes">Yes</label>
-              <input
-                type="radio"
-                id="chipped-no"
-                name="chipped"
-                value="no"
-                v-model="form.chipped"
-              />
-              <label for="found">No</label>
-            </fieldset>
-            <label for="lastSeen">Last Seen</label>
-            <input type="date" name="" value="" v-model="form.lastSeen" />
-
-            <label for="description">Description</label>
-            <textarea
-              name="description"
-              rows="2"
-              cols="40"
-              placeholder="description"
-              v-model="form.description"
-            ></textarea>
-            <label for="name">Name</label>
-            <input
-              type="text"
-              name="name"
-              value=""
-              placeholder="name"
-              v-model="form.name"
-            />
-            <label for="gender">Gender</label>
-            <input
-              type="text"
-              name="gender"
-              value=""
-              placeholder="gender"
-              v-model="form.gender"
-            />
-            <label for="breed">Breed</label>
-            <input
-              type="text"
-              name="breed"
-              value=""
-              placeholder="breed"
-              v-model="form.breed"
-            />
-            <label for="age">Age</label>
-            <input
-              type="text"
-              name="age"
-              value=""
-              placeholder="age"
-              v-model="form.age"
-            />
-            <input
-              id="select-img"
-              type="file"
-              name="file"
-              accept="image/*"
-              @change="handleFileChange"
-              class="inputfile"
-            />
-          </form>
-          <label>
-            <gmap-autocomplete @place_changed="setPlace"> </gmap-autocomplete>
-            <button @click="addMarker">Add</button>
-          </label>
-          <gmap-map
-            :center="center"
-            :zoom="12"
-            style="width:100%;  height: 400px;"
-          >
-            <gmap-marker
-              :key="index"
-              v-for="(m, index) in markers"
-              :position="m.position"
-              @click="center = m.position"
-            ></gmap-marker>
-          </gmap-map>
+  <div class="connect">
+    <div class="lost-box">
+      <div class="router-lost">
+        <div class="links-lost">
+          <router-link class="nav" to="/connect/lost">Lost</router-link> |
+          <router-link class="nav" to="/connect/found">Found</router-link>
         </div>
-        <b-button class="mt-3" block v-on:click.prevent="sendForm"
-          >Upload</b-button
-        >
-      </b-modal>
+
+        <div id="lost-found-btn">
+          <b-button
+            class="doggy-btn"
+            v-if="userInfo.userId != null"
+            id="show-btn"
+            @click="$bvModal.show('uploadLostFound')"
+          >
+            Upload Details
+          </b-button>
+        </div>
+        <b-modal id="uploadLostFound" hide-footer>
+          <template slot="modal-title">
+            Lost & Found Uploader
+          </template>
+          <div class="d-block text-center">
+            <h2>Please add a lost or found Pet</h2>
+            <form class="">
+              <label for="spiecies">Spiecies</label>
+              <input
+                type="text"
+                name="spiecies"
+                value=""
+                placeholder="species"
+                v-model="form.species"
+              />
+              <fieldset>
+                <label for="status">Status</label>
+                <input
+                  type="radio"
+                  id="lost"
+                  name="status"
+                  value="lost"
+                  v-model="form.status"
+                />
+                <label for="lost">Lost</label>
+                <input
+                  type="radio"
+                  id="found"
+                  name="status"
+                  value="found"
+                  v-model="form.status"
+                />
+                <label for="found">Found</label>
+              </fieldset>
+              <label for="chipped">Chipped</label>
+              <fieldset>
+                <input
+                  type="radio"
+                  id="chipped-yes"
+                  name="chipped"
+                  value="yes"
+                  v-model="form.chipped"
+                />
+                <label for="chipped-yes">Yes</label>
+                <input
+                  type="radio"
+                  id="chipped-no"
+                  name="chipped"
+                  value="no"
+                  v-model="form.chipped"
+                />
+                <label for="found">No</label>
+              </fieldset>
+              <label for="lastSeen">Last Seen</label>
+              <input type="date" name="" value="" v-model="form.lastSeen" />
+
+              <label for="description">Description</label>
+              <textarea
+                name="description"
+                rows="2"
+                cols="40"
+                placeholder="description"
+                v-model="form.description"
+              ></textarea>
+              <label for="name">Name</label>
+              <input
+                type="text"
+                name="name"
+                value=""
+                placeholder="name"
+                v-model="form.name"
+              />
+              <label for="gender">Gender</label>
+              <input
+                type="text"
+                name="gender"
+                value=""
+                placeholder="gender"
+                v-model="form.gender"
+              />
+              <label for="breed">Breed</label>
+              <input
+                type="text"
+                name="breed"
+                value=""
+                placeholder="breed"
+                v-model="form.breed"
+              />
+              <label for="age">Age</label>
+              <input
+                type="text"
+                name="age"
+                value=""
+                placeholder="age"
+                v-model="form.age"
+              />
+              <input
+                id="select-img"
+                type="file"
+                name="file"
+                accept="image/*"
+                @change="handleFileChange"
+                class="inputfile"
+              />
+            </form>
+            <label>
+              <gmap-autocomplete @place_changed="setPlace"> </gmap-autocomplete>
+              <button @click="addMarker">Add</button>
+            </label>
+            <gmap-map
+              :center="center"
+              :zoom="12"
+              style="width:100%;  height: 400px;"
+            >
+              <gmap-marker
+                :key="index"
+                v-for="(m, index) in markers"
+                :position="m.position"
+                @click="center = m.position"
+              ></gmap-marker>
+            </gmap-map>
+          </div>
+          <b-button class="mt-3" block v-on:click.prevent="sendForm"
+            >Upload</b-button
+          >
+        </b-modal>
+      </div>
+      <Lost
+        :lostAnimals="lostAnimals"
+        v-if="this.$route.path == '/connect/lost'"
+      />
+      <Found
+        :foundAnimals="foundAnimals"
+        v-if="this.$route.path == '/connect/found'"
+      />
     </div>
-    <Lost
-      :lostAnimals="lostAnimals"
-      v-if="this.$route.path == '/connect/lost'"
-    />
-    <Found
-      :foundAnimals="foundAnimals"
-      v-if="this.$route.path == '/connect/found'"
-    />
   </div>
 </template>
 
@@ -261,4 +268,4 @@ export default {
 };
 </script>
 
-<style src="../../public/style.lost.css" scoped></style>
+<style src="../../public/style.connect.css" scoped></style>

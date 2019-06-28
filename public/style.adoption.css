@@ -6,7 +6,7 @@
 
 /********************FORM SECTION**********************/
 .adopt {
-  background-image: url("https://www.muralswallpaper.com/app/uploads/Red-Dog-Paw-Print-Pattern-Wallpaper-Mural-Plain-820x532.jpg");
+  background-image: url("https://images.unsplash.com/photo-1444212477490-ca407925329e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1400&q=80");
   display: flex;
   position: absolute;
   background-size: cover;
@@ -31,7 +31,7 @@ form {
   font-family: dancing;
   font-size: 20px;
   color: black;
-  background: chocolate;
+  background: #d2691ed9;
 }
 form h1 {
   text-align: center;

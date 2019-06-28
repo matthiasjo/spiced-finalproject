@@ -104,3 +104,4 @@ export default {
   updated: function() {}
 };
 </script>
+<style src="../../public/style.found.css" scoped></style>

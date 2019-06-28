@@ -103,3 +103,4 @@ export default {
   updated: function() {}
 };
 </script>
+<style src="../../public/style.lost.css" scoped></style>

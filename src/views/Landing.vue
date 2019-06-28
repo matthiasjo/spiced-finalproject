@@ -23,7 +23,10 @@
         </div>
       </div>
       <div class="landing-help">
-        <h1>Join the team and <a id="help-link" href="#"> help us </a>out</h1>
+        <h1>
+          Join the team and
+          <a id="help-link" href="/#/adoption"> help us </a>out
+        </h1>
       </div>
     </div>
   </b-container>

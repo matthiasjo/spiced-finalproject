@@ -1,0 +1,46 @@
+/********************Imports**********************/
+@font-face {
+  src: url("/fonts/DancingScript-Regular.otf");
+  font-family: dancing;
+}
+
+.connect {
+  background-image: url("https://images.unsplash.com/photo-1551717743-49959800b1f6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1347&q=80");
+  display: flex;
+  background-size: cover;
+  min-height: 100vh;
+  background-position: center center;
+  background-attachment: fixed;
+}
+
+#lost-found-btn {
+  position: absolute;
+
+  border: 3ox solid #ff7a00;
+}
+
+.doggy-btn {
+  width: 500px;
+
+  background-color: #6495ed;
+  font-size: 30px;
+  font-family: dancing;
+}
+
+.router-lost {
+  position: absolute;
+  top: 25%;
+  left: 40%;
+}
+
+.links-lost {
+  display: flex;
+  justify-content: space-around;
+  font-family: dancing;
+  font-size: 96px;
+  margin-left: 20%;
+}
+
+.links-lost a {
+  color: #ff7a00;
+}
