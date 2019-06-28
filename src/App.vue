@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <div class="nav-wrapper">
-      <div v-if="verified">
+      <div id="verified" v-if="verified">
         <p>Thank You. Your email has been verified!</p>
       </div>
       <div id="nav">
