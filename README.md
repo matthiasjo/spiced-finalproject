@@ -20,10 +20,15 @@ npm run build
 npm run test
 ```
 
-### Lints and fixes files
-```
-npm run lint
-```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+I had one week to come up with a final project idea and to realize it. We decided to do a group project to practice the github workflow and decided on Vue.js as framework because we worked with React, Redux and Socket.io in the previouse 3 weeks. We wanted to transfer this knowledge to Vue. Because of the limited time we decided to use Bootstrap in the frontend. 
+
+
+Feautres of this project:
+- Photo upload on aws s3
+- Use of google maps api
+- Vuex state managment
+- Email verification with nodemailer and node crypto
+- User profiles and admin priviliges
+- Search
+- Comment function
