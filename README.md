@@ -21,6 +21,9 @@ npm run test
 ```
 
 
+______________________________________________________________________________________________________
+
+
 I had one week to come up with a final project idea and to realize it. We decided to do a group project to practice the github workflow and decided on Vue.js as framework because we worked with React, Redux and Socket.io in the previouse 3 weeks. We wanted to transfer this knowledge to Vue. Because of the limited time we decided to use Bootstrap in the frontend. 
 
 
