@@ -29,7 +29,7 @@ ________________________________________________________________________________
 
 
 I had one week to come up with a final project idea and to realize it. We decided to do a group project to practice the github workflow and decided on Vue.js as framework because we worked with React, Redux and Socket.io in the previouse 3 weeks. We wanted to transfer this knowledge to Vue. Because of the limited time we decided to use Bootstrap in the frontend. 
-
+This project is work in progress and will be continued. 
 
 Feautres of this project:
 - Photo upload on aws s3
@@ -39,3 +39,11 @@ Feautres of this project:
 - User profiles and admin priviliges
 - Search
 - Comment function
+
+
+### Screenshots of the project
+
+![Screenshot](/screenshots/scrn1.png?raw=true "Screenshot 1")
+
+![Screenshot](/screenshots/scrn2.png?raw=true "Screenshot 2")
+
