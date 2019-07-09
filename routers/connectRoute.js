@@ -77,7 +77,7 @@ router
           lastseen: lastSeen,
           gender: gender,
           breed: breed,
-          location: location,
+          location: JSON.parse(location),
           description: description,
           age: age
         };

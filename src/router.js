@@ -50,7 +50,7 @@ export default new Router({
     },
     {
       path: "/adoption",
-      name: "adoption",
+      name: "Adoption",
       component: () =>
         import(/* webpackChunkName: "adoption" */ "./views/Adoption.vue")
     },
