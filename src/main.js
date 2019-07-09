@@ -6,10 +6,11 @@ import "normalize.css";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap-vue/dist/bootstrap-vue.css";
 import * as VueGoogleMaps from "vue2-google-maps";
+import gmapskey from "../gmapskey.json";
 
 Vue.use(VueGoogleMaps, {
   load: {
-    key: "AIzaSyASxA30azm3KOgqHnfhsUrN9Iu_geTMftg",
+    key: gmapskey.GMAPS_API,
     libraries: "places" // necessary for places input
   }
 });
