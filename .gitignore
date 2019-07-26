@@ -2,7 +2,7 @@
 node_modules
 /dist
 secrets.json
-
+mapsApiKey.json
 
 # local env files
 .env.local
